@@ -1,4 +1,4 @@
-
+﻿
 package com.from.view.swipeback;
 
 import android.app.Activity;
@@ -15,18 +15,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.AbsSavedState;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
@@ -44,7 +44,7 @@ import java.util.ArrayList;
 
 
 /**
- * 通过修改 SlidingPaneLayout 实现滑动返回布局
+ * 閫氳繃淇敼 SlidingPaneLayout 瀹炵幇婊戝姩杩斿洖甯冨眬
  *
  * @version 0.0.9
  * @since 2019-1
@@ -144,43 +144,39 @@ public class SwipeBackLayout extends ViewGroup {
         }
     }
 
-    // ======================== 新加的 START ========================
+    // ======================== 鏂板姞鐨?START ========================
     /**
-     * 滑动返回是否可用
+     * 婊戝姩杩斿洖鏄惁鍙敤
      */
     private boolean mSwipeBackEnable = true;
     /**
-     * 是否仅仅跟踪左侧边缘的滑动返回
-     */
+     * 鏄惁浠呬粎璺熻釜宸︿晶杈圭紭鐨勬粦鍔ㄨ繑鍥?     */
     private boolean mIsOnlyTrackingLeftEdge = true;
     /**
-     * 滑动返回时的阴影视图
+     * 婊戝姩杩斿洖鏃剁殑闃村奖瑙嗗浘
      */
     private SwipeBackShadowView mShadowView;
     /**
-     * 内容视图
+     * 鍐呭瑙嗗浘
      */
     private View mContentView;
     /**
-     * 当前 Activity
+     * 褰撳墠 Activity
      */
     private Activity mActivity;
     /**
-     * 触发滑动返回的滑动范围
-     */
+     * 瑙﹀彂婊戝姩杩斿洖鐨勬粦鍔ㄨ寖鍥?     */
     private float mSwipeBackThreshold = 0.3f;
     /**
-     * 底部导航条是否悬浮在内容上
-     */
+     * 搴曢儴瀵艰埅鏉℃槸鍚︽偓娴湪鍐呭涓?     */
     private boolean mIsNavigationBarOverlap = false;
     /**
-     * 是否正在滑动
+     * 鏄惁姝ｅ湪婊戝姩
      */
     private boolean mIsSliding;
 
     /**
-     * 将该滑动返回控件添加到 Activity 上
-     */
+     * 灏嗚婊戝姩杩斿洖鎺т欢娣诲姞鍒?Activity 涓?     */
     void attachToActivity(Activity activity) {
         mActivity = activity;
 
@@ -199,44 +195,40 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
     /**
-     * 设置滑动返回是否可用。默认值为 true
+     * 璁剧疆婊戝姩杩斿洖鏄惁鍙敤銆傞粯璁ゅ€间负 true
      */
     void setSwipeBackEnable(boolean swipeBackEnable) {
         mSwipeBackEnable = swipeBackEnable;
     }
 
     /**
-     * 设置是否仅仅跟踪左侧边缘的滑动返回。默认值为 true
+     * 璁剧疆鏄惁浠呬粎璺熻釜宸︿晶杈圭紭鐨勬粦鍔ㄨ繑鍥炪€傞粯璁ゅ€间负 true
      */
     void setIsOnlyTrackingLeftEdge(boolean isOnlyTrackingLeftEdge) {
         mIsOnlyTrackingLeftEdge = isOnlyTrackingLeftEdge;
     }
 
     /**
-     * 设置是否是微信滑动返回样式
-     */
+     * 璁剧疆鏄惁鏄井淇℃粦鍔ㄨ繑鍥炴牱寮?     */
     void setIsWeChatStyle(boolean isWeChatStyle) {
         mShadowView.setIsWeChatStyle(isWeChatStyle);
     }
 
     /**
-     * 设置触发释放后自动滑动返回的阈值
-     *
-     * @param threshold 触发释放后自动滑动返回的阈值
-     */
+     * 璁剧疆瑙﹀彂閲婃斁鍚庤嚜鍔ㄦ粦鍔ㄨ繑鍥炵殑闃堝€?     *
+     * @param threshold 瑙﹀彂閲婃斁鍚庤嚜鍔ㄦ粦鍔ㄨ繑鍥炵殑闃堝€?     */
     void setSwipeBackThreshold(@FloatRange(from = 0.0f, to = 1.0f) float threshold) {
         mSwipeBackThreshold = threshold;
     }
 
     /**
-     * 设置底部导航条是否悬浮在内容上
-     */
+     * 璁剧疆搴曢儴瀵艰埅鏉℃槸鍚︽偓娴湪鍐呭涓?     */
     void setIsNavigationBarOverlap(boolean overlap) {
         mIsNavigationBarOverlap = overlap;
     }
 
     /**
-     * 是否正在滑动
+     * 鏄惁姝ｅ湪婊戝姩
      */
     boolean isSliding() {
         return this.mIsSliding;
@@ -255,7 +247,7 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
     /**
-     * 滑动返回是否可用
+     * 婊戝姩杩斿洖鏄惁鍙敤
      */
     private boolean isSwipeBackEnable() {
         if (mActivity instanceof ISwipeBack) {
@@ -266,26 +258,25 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
     /**
-     * 设置阴影资源 id
+     * 璁剧疆闃村奖璧勬簮 id
      */
     void setShadowResId(@DrawableRes int shadowResId) {
         mShadowView.setShadowResId(shadowResId);
     }
 
     /**
-     * 设置是否显示滑动返回的阴影效果
-     */
+     * 璁剧疆鏄惁鏄剧ず婊戝姩杩斿洖鐨勯槾褰辨晥鏋?     */
     void setIsNeedShowShadow(boolean isNeedShowShadow) {
         mShadowView.setIsNeedShowShadow(isNeedShowShadow);
     }
 
     /**
-     * 设置阴影区域的透明度是否根据滑动的距离渐变
+     * 璁剧疆闃村奖鍖哄煙鐨勯€忔槑搴︽槸鍚︽牴鎹粦鍔ㄧ殑璺濈娓愬彉
      */
     void setIsShadowAlphaGradient(boolean isShadowAlphaGradient) {
         mShadowView.setIsShadowAlphaGradient(isShadowAlphaGradient);
     }
-    // ======================== 新加的 END ========================
+    // ======================== 鏂板姞鐨?END ========================
 
     /**
      * Listener for monitoring events about sliding panes.
@@ -347,10 +338,10 @@ public class SwipeBackLayout extends ViewGroup {
 
         final float density = context.getResources().getDisplayMetrics().density;
 
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
 //        mOverhangSize = (int) (DEFAULT_OVERHANG_SIZE * density + 0.5f);
         mOverhangSize = 0;
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         setWillNotDraw(false);
 
@@ -421,11 +412,11 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
     void dispatchOnPanelSlide(View panel) {
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         mShadowView.setShadowAlpha(1.0f - mSlideOffset);
 
         mShadowView.onPanelSlide(mSlideOffset);
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         if (mPanelSlideListener != null) {
             mPanelSlideListener.onPanelSlide(panel, mSlideOffset);
@@ -438,15 +429,15 @@ public class SwipeBackLayout extends ViewGroup {
         }
         sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
 
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         mShadowView.unBindPreActivity(true);
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
     }
 
     void dispatchOnPanelClosed(View panel) {
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         mShadowView.onPanelClosed();
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         if (mPanelSlideListener != null) {
             mPanelSlideListener.onPanelClosed(panel);
@@ -550,12 +541,12 @@ public class SwipeBackLayout extends ViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
 //        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthSize = SwipeBackUtil.getRealScreenWidth(mActivity);
 //        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         int heightSize = SwipeBackUtil.getRealScreenHeight(mActivity);
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         if (widthMode != MeasureSpec.EXACTLY) {
             if (isInEditMode()) {
@@ -598,7 +589,7 @@ public class SwipeBackLayout extends ViewGroup {
                 break;
         }
 
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         if (!mIsNavigationBarOverlap && SwipeBackUtil.isPortrait(mActivity)) {
             maxLayoutHeight -= SwipeBackUtil.getNavigationBarHeight(mActivity);
         }
@@ -606,7 +597,7 @@ public class SwipeBackLayout extends ViewGroup {
         if (mIsNavigationBarOverlap && !SwipeBackUtil.isPortrait(mActivity)) {
             widthSize += SwipeBackUtil.getNavigationBarHeight(mActivity);
         }
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         float weightSum = 0;
         boolean canSlide = false;
@@ -891,12 +882,12 @@ public class SwipeBackLayout extends ViewGroup {
             }
         }
 
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         if (!isSwipeBackEnable()) {
             mDragHelper.cancel();
             return super.onInterceptTouchEvent(ev);
         }
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         if (!mCanSlide || (mIsUnableToDrag && action != MotionEvent.ACTION_DOWN)) {
             mDragHelper.cancel();
@@ -946,11 +937,11 @@ public class SwipeBackLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         if (!isSwipeBackEnable()) {
             return super.onTouchEvent(ev);
         }
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         if (!mCanSlide) {
             return super.onTouchEvent(ev);
@@ -1097,9 +1088,9 @@ public class SwipeBackLayout extends ViewGroup {
             dimChildView(mSlideableView, mSlideOffset, mSliderFadeColor);
         }
 
-        // ======================== 新加的 START ========================
+        // ======================== 鏂板姞鐨?START ========================
         ViewCompat.setTranslationX(mShadowView, -mShadowView.getMeasuredWidth() + newLeft);
-        // ======================== 新加的 END ========================
+        // ======================== 鏂板姞鐨?END ========================
 
         dispatchOnPanelSlide(mSlideableView);
     }
@@ -1428,14 +1419,14 @@ public class SwipeBackLayout extends ViewGroup {
                 return false;
             }
 
-            // ======================== 新加的 START ========================
+            // ======================== 鏂板姞鐨?START ========================
 //            return ((LayoutParams) child.getLayoutParams()).slideable;
 
             if (mIsOnlyTrackingLeftEdge) {
                 return false;
             }
             return isSwipeBackEnable() && ((LayoutParams) child.getLayoutParams()).slideable;
-            // ======================== 新加的 END ========================
+            // ======================== 鏂板姞鐨?END ========================
         }
 
         @Override
@@ -1449,22 +1440,22 @@ public class SwipeBackLayout extends ViewGroup {
                     dispatchOnPanelOpened(mSlideableView);
                     mPreservedOpenState = true;
                 }
-                // ======================== 新加的 START ========================
+                // ======================== 鏂板姞鐨?START ========================
 //            }
                 mIsSliding = false;
             } else {
                 mIsSliding = true;
             }
-            // ======================== 新加的 END ========================
+            // ======================== 鏂板姞鐨?END ========================
         }
 
         @Override
         public void onViewCaptured(View capturedChild, int activePointerId) {
-            // ======================== 新加的 START ========================
+            // ======================== 鏂板姞鐨?START ========================
             if (isSwipeBackEnable()) {
                 mShadowView.bindPreActivity();
             }
-            // ======================== 新加的 END ========================
+            // ======================== 鏂板姞鐨?END ========================
             // Make all child views visible in preparation for sliding things around
             setAllChildrenVisible();
         }
@@ -1529,13 +1520,13 @@ public class SwipeBackLayout extends ViewGroup {
 
         @Override
         public void onEdgeDragStarted(int edgeFlags, final int pointerId) {
-            // ======================== 新加的 START ========================
+            // ======================== 鏂板姞鐨?START ========================
 //            mDragHelper.captureChildView(mSlideableView, pointerId);
 
             if (isSwipeBackEnable()) {
                 mDragHelper.captureChildView(mSlideableView, pointerId);
             }
-            // ======================== 新加的 END ========================
+            // ======================== 鏂板姞鐨?END ========================
         }
     }
 
@@ -1791,3 +1782,4 @@ public class SwipeBackLayout extends ViewGroup {
         return ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
     }
 }
+

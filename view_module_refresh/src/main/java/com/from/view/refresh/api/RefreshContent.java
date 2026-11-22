@@ -1,12 +1,12 @@
-package com.from.view.refresh.api;
+﻿package com.from.view.refresh.api;
 
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * 刷新内容组件
+ * 鍒锋柊鍐呭缁勪欢
  * Created by SCWANG on 2017/5/26.
  */
 public interface RefreshContent {
@@ -30,3 +30,4 @@ public interface RefreshContent {
 
     AnimatorUpdateListener scrollContentWhenFinished(int spinner);
 }
+

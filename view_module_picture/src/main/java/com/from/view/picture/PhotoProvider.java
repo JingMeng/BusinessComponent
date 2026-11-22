@@ -1,6 +1,6 @@
-package com.from.view.picture;
+﻿package com.from.view.picture;
 
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 
 /**
  *
@@ -14,3 +14,4 @@ public class PhotoProvider extends FileProvider {
 
     }
 }
+

@@ -1,13 +1,13 @@
-package com.from.view.refresh.internal;
+﻿package com.from.view.refresh.internal;
 
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
- * 箭头图像
+ * 绠ご鍥惧儚
  * Created by SCWANG on 2018/2/5.
  */
 
@@ -46,3 +46,4 @@ public class ArrowDrawable extends PaintDrawable {
         canvas.drawPath(mPath, mPaint);
     }
 }
+

@@ -1,14 +1,14 @@
-package com.from.view.refresh.header;
+﻿package com.from.view.refresh.header;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -35,7 +35,7 @@ import java.util.Locale;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
- * 经典下拉头部
+ * 缁忓吀涓嬫媺澶撮儴
  * Created by SCWANG on 2017/5/28.
  */
 @SuppressWarnings({"unused", "UnusedReturnValue"})
@@ -43,14 +43,14 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
 
     public static final byte ID_TEXT_UPDATE = 4;
 
-    public static String REFRESH_HEADER_PULLING = null;//"下拉可以刷新";
-    public static String REFRESH_HEADER_REFRESHING = null;//"正在刷新...";
-    public static String REFRESH_HEADER_LOADING = null;//"正在加载...";
-    public static String REFRESH_HEADER_RELEASE = null;//"释放立即刷新";
-    public static String REFRESH_HEADER_FINISH = null;//"刷新完成";
-    public static String REFRESH_HEADER_FAILED = null;//"刷新失败";
-    public static String REFRESH_HEADER_UPDATE = null;//"上次更新 M-d HH:mm";
-    public static String REFRESH_HEADER_SECONDARY = null;//"释放进入二楼";
+    public static String REFRESH_HEADER_PULLING = null;//"涓嬫媺鍙互鍒锋柊";
+    public static String REFRESH_HEADER_REFRESHING = null;//"姝ｅ湪鍒锋柊...";
+    public static String REFRESH_HEADER_LOADING = null;//"姝ｅ湪鍔犺浇...";
+    public static String REFRESH_HEADER_RELEASE = null;//"閲婃斁绔嬪嵆鍒锋柊";
+    public static String REFRESH_HEADER_FINISH = null;//"鍒锋柊瀹屾垚";
+    public static String REFRESH_HEADER_FAILED = null;//"鍒锋柊澶辫触";
+    public static String REFRESH_HEADER_UPDATE = null;//"涓婃鏇存柊 M-d HH:mm";
+    public static String REFRESH_HEADER_SECONDARY = null;//"閲婃斁杩涘叆浜屾ゼ";
 //    public static String REFRESH_HEADER_UPDATE = "'Last update' M-d HH:mm";
 
     protected String KEY_LAST_UPDATE_TIME = "LAST_UPDATE_TIME";
@@ -61,14 +61,14 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
     protected DateFormat mLastUpdateFormat;
     protected boolean mEnableLastTime = true;
 
-    protected String mTextPulling = null;//"下拉可以刷新";
-    protected String mTextRefreshing = null;//"正在刷新...";
-    protected String mTextLoading = null;//"正在加载...";
-    protected String mTextRelease = null;//"释放立即刷新";
-    protected String mTextFinish = null;//"刷新完成";
-    protected String mTextFailed = null;//"刷新失败";
-    protected String mTextUpdate = null;//"上次更新 M-d HH:mm";
-    protected String mTextSecondary = null;//"释放进入二楼";
+    protected String mTextPulling = null;//"涓嬫媺鍙互鍒锋柊";
+    protected String mTextRefreshing = null;//"姝ｅ湪鍒锋柊...";
+    protected String mTextLoading = null;//"姝ｅ湪鍔犺浇...";
+    protected String mTextRelease = null;//"閲婃斁绔嬪嵆鍒锋柊";
+    protected String mTextFinish = null;//"鍒锋柊瀹屾垚";
+    protected String mTextFailed = null;//"鍒锋柊澶辫触";
+    protected String mTextUpdate = null;//"涓婃鏇存柊 M-d HH:mm";
+    protected String mTextSecondary = null;//"閲婃斁杩涘叆浜屾ゼ";
 
     //<editor-fold desc="RelativeLayout">
     public ClassicsHeader(Context context) {
@@ -217,8 +217,7 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
         centerLayout.addView(updateView, lpUpdateText);
         mTitleText.setText(thisView.isInEditMode() ? mTextRefreshing : mTextPulling);
 
-        try {//try 不能删除-否则会出现兼容性问题
-            if (context instanceof FragmentActivity) {
+        try {//try 涓嶈兘鍒犻櫎-鍚﹀垯浼氬嚭鐜板吋瀹规€ч棶棰?            if (context instanceof FragmentActivity) {
                 FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
                 if (manager != null) {
                     @SuppressLint("RestrictedApi")
@@ -258,8 +257,7 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
         } else {
             mTitleText.setText(mTextFailed);
         }
-        return super.onFinish(layout, success);//延迟500毫秒之后再弹回
-    }
+        return super.onFinish(layout, success);//寤惰繜500姣涔嬪悗鍐嶅脊鍥?    }
 
     @Override
     public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
@@ -370,7 +368,7 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
 //    }
 
 //    /**
-//     * @deprecated 使用 findViewById(ID_TEXT_UPDATE) 代替
+//     * @deprecated 浣跨敤 findViewById(ID_TEXT_UPDATE) 浠ｆ浛
 //     */
 //    @Deprecated
 //    public TextView getLastUpdateText() {
@@ -380,3 +378,4 @@ public class ClassicsHeader extends InternalClassics<ClassicsHeader> implements 
     //</editor-fold>
 
 }
+

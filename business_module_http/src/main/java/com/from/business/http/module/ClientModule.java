@@ -1,9 +1,9 @@
-package com.from.business.http.module;
+﻿package com.from.business.http.module;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.HttpHandler;
 import com.from.business.http.log.RequestInterceptor;
@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * ================================================
- * 提供一些三方库客户端实例的 {@link  }
+ * 鎻愪緵涓€浜涗笁鏂瑰簱瀹㈡埛绔疄渚嬬殑 {@link  }
  * <p>
  * ================================================
  */
@@ -39,7 +39,7 @@ public abstract class ClientModule {
     private static final int TIME_OUT = 10;
 
     /**
-     * 提供 {@link Retrofit}
+     * 鎻愪緵 {@link Retrofit}
      *
      * @param application   {@link Application}
      * @param configuration {@link RetrofitConfiguration}
@@ -52,20 +52,20 @@ public abstract class ClientModule {
     static Retrofit provideRetrofit(Application application, @Nullable RetrofitConfiguration configuration, Retrofit.Builder builder, OkHttpClient client
         , HttpUrl httpUrl, Gson gson) {
         builder
-            .baseUrl(httpUrl)//域名
-            .client(client);//设置 OkHttp
+            .baseUrl(httpUrl)//鍩熷悕
+            .client(client);//璁剧疆 OkHttp
 
         if (configuration != null)
             configuration.configRetrofit(application, builder);
 
         builder
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用 RxJava
-            .addConverterFactory(GsonConverterFactory.create(gson));//使用 Gson
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//浣跨敤 RxJava
+            .addConverterFactory(GsonConverterFactory.create(gson));//浣跨敤 Gson
         return builder.build();
     }
 
     /**
-     * 提供 {@link OkHttpClient}
+     * 鎻愪緵 {@link OkHttpClient}
      *
      * @param application     {@link Application}
      * @param configuration   {@link OkhttpConfiguration}
@@ -91,14 +91,14 @@ public abstract class ClientModule {
                 }
             });
 
-        //如果外部提供了 Interceptor 的集合则遍历添加
+        //濡傛灉澶栭儴鎻愪緵浜?Interceptor 鐨勯泦鍚堝垯閬嶅巻娣诲姞
         if (interceptors != null) {
             for (Interceptor interceptor : interceptors) {
                 builder.addInterceptor(interceptor);
             }
         }
 
-        //为 OkHttp 设置默认的线程池
+        //涓?OkHttp 璁剧疆榛樿鐨勭嚎绋嬫睜
         builder.dispatcher(new Dispatcher(executorService));
 
         if (configuration != null)
@@ -117,11 +117,11 @@ public abstract class ClientModule {
     abstract Interceptor bindInterceptor(RequestInterceptor interceptor);
 
     /**
-     * 提供 {@link RxCache}
+     * 鎻愪緵 {@link RxCache}
      *
      * @param application    {@link Application}
      * @param configuration  {@link RxCacheConfiguration}
-     * @param cacheDirectory RxCache 缓存路径
+     * @param cacheDirectory RxCache 缂撳瓨璺緞
      * @param gson           {@link Gson}
      * @return {@link RxCache}
      */
@@ -138,9 +138,8 @@ public abstract class ClientModule {
     }
 
     /**
-     * 需要单独给 {@link RxCache} 提供子缓存文件
-     *
-     * @param cacheDir 框架缓存文件
+     * 闇€瑕佸崟鐙粰 {@link RxCache} 鎻愪緵瀛愮紦瀛樻枃浠?     *
+     * @param cacheDir 妗嗘灦缂撳瓨鏂囦欢
      * @return {@link File}
      */
     static File provideRxCacheDirectory(File cacheDir) {
@@ -149,7 +148,7 @@ public abstract class ClientModule {
     }
 
     /**
-     * 提供处理 RxJava 错误的管理器
+     * 鎻愪緵澶勭悊 RxJava 閿欒鐨勭鐞嗗櫒
      *
      * @param application {@link Application}
      * @param listener    {@link ResponseErrorListener}
@@ -164,26 +163,23 @@ public abstract class ClientModule {
     }
 
     /**
-     * {@link Retrofit} 自定义配置接口
-     */
+     * {@link Retrofit} 鑷畾涔夐厤缃帴鍙?     */
     public interface RetrofitConfiguration {
         void configRetrofit(@NonNull Context context, @NonNull Retrofit.Builder builder);
     }
 
     /**
-     * {@link OkHttpClient} 自定义配置接口
-     */
+     * {@link OkHttpClient} 鑷畾涔夐厤缃帴鍙?     */
     public interface OkhttpConfiguration {
         void configOkhttp(@NonNull Context context, @NonNull OkHttpClient.Builder builder);
     }
 
     /**
-     * {@link RxCache} 自定义配置接口
-     */
+     * {@link RxCache} 鑷畾涔夐厤缃帴鍙?     */
     public interface RxCacheConfiguration {
         /**
-         * 若想自定义 RxCache 的缓存文件夹或者解析方式, 如改成 FastJson
-         * 请 {@code return rxCacheBuilder.persistence(cacheDirectory, new FastJsonSpeaker());}, 否则请 {@code return null;}
+         * 鑻ユ兂鑷畾涔?RxCache 鐨勭紦瀛樻枃浠跺す鎴栬€呰В鏋愭柟寮? 濡傛敼鎴?FastJson
+         * 璇?{@code return rxCacheBuilder.persistence(cacheDirectory, new FastJsonSpeaker());}, 鍚﹀垯璇?{@code return null;}
          *
          * @param context {@link Context}
          * @param builder {@link RxCache.Builder}
@@ -192,3 +188,4 @@ public abstract class ClientModule {
         RxCache configRxCache(@NonNull Context context, @NonNull RxCache.Builder builder);
     }
 }
+

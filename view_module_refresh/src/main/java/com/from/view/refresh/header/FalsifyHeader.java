@@ -1,10 +1,10 @@
-package com.from.view.refresh.header;
+﻿package com.from.view.refresh.header;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -22,11 +22,10 @@ import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
 
 /**
- * 虚假的 Header
- * 用于 正真的 Header 在 RefreshLayout 外部时，
- * 使用本虚假的 FalsifyHeader 填充在 RefreshLayout 内部
- * 具体使用方法 参考 纸飞机（FlyRefreshHeader）
- * Created by SCWANG on 2017/6/14.
+ * 铏氬亣鐨?Header
+ * 鐢ㄤ簬 姝ｇ湡鐨?Header 鍦?RefreshLayout 澶栭儴鏃讹紝
+ * 浣跨敤鏈櫄鍋囩殑 FalsifyHeader 濉厖鍦?RefreshLayout 鍐呴儴
+ * 鍏蜂綋浣跨敤鏂规硶 鍙傝€?绾搁鏈猴紙FlyRefreshHeader锛? * Created by SCWANG on 2017/6/14.
  */
 public class FalsifyHeader extends InternalAbstract implements RefreshHeader {
     protected RefreshKernel mRefreshKernel;
@@ -48,7 +47,7 @@ public class FalsifyHeader extends InternalAbstract implements RefreshHeader {
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
         final View thisView = this;
-        if (thisView.isInEditMode()) {//这段代码在运行时不会执行，只会在Studio编辑预览时运行，不用在意性能问题
+        if (thisView.isInEditMode()) {//杩欐浠ｇ爜鍦ㄨ繍琛屾椂涓嶄細鎵ц锛屽彧浼氬湪Studio缂栬緫棰勮鏃惰繍琛岋紝涓嶇敤鍦ㄦ剰鎬ц兘闂
             int d = DensityUtil.dp2px(5);
 
             Paint paint = new Paint();
@@ -83,12 +82,12 @@ public class FalsifyHeader extends InternalAbstract implements RefreshHeader {
     public void onReleased(@NonNull RefreshLayout layout, int height, int maxDragHeight) {
         if (mRefreshKernel != null) {
             mRefreshKernel.setState(RefreshState.None);
-            //onReleased 的时候 调用 setState(RefreshState.None); 并不会立刻改变成 None
-            //而是先执行一个回弹动画，RefreshFinish 是介于 Refreshing 和 None 之间的状态
-            //RefreshFinish 用于在回弹动画结束时候能顺利改变为 None
+            //onReleased 鐨勬椂鍊?璋冪敤 setState(RefreshState.None); 骞朵笉浼氱珛鍒绘敼鍙樻垚 None
+            //鑰屾槸鍏堟墽琛屼竴涓洖寮瑰姩鐢伙紝RefreshFinish 鏄粙浜?Refreshing 鍜?None 涔嬮棿鐨勭姸鎬?            //RefreshFinish 鐢ㄤ簬鍦ㄥ洖寮瑰姩鐢荤粨鏉熸椂鍊欒兘椤哄埄鏀瑰彉涓?None
             mRefreshKernel.setState(RefreshState.RefreshFinish);
         }
     }
 
     //</editor-fold>
 }
+

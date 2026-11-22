@@ -1,4 +1,4 @@
-package me.businesscomponent.activity;
+﻿package me.businesscomponent.activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.from.view.picture.PictureSelector;
 import com.from.view.picture.imageloader.GlideImageLoader;
@@ -29,8 +29,7 @@ public class PicExampleActivity extends AppCompatActivity {
     // need implements ISwipeBack
     //    @Override
 //    public boolean isEnableGesture() {
-//        // 通过返回值控制是否可以侧滑
-//        return false;
+//        // 閫氳繃杩斿洖鍊兼帶鍒舵槸鍚﹀彲浠ヤ晶婊?//        return false;
 //    }
     private static final int SELECT_IMAGE = 0x006F;
 
@@ -76,3 +75,4 @@ public class PicExampleActivity extends AppCompatActivity {
         }
     }
 }
+

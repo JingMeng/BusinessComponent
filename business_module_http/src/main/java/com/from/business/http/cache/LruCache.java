@@ -1,7 +1,7 @@
-package com.from.business.http.cache;
+﻿package com.from.business.http.cache;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.module.http.HttpConfigModule;
 
@@ -11,8 +11,7 @@ import java.util.Set;
 
 /**
  * ================================================
- * LRU 即 Least Recently Used,最近最少使用,也就是说,当缓存满了,会优先淘汰那些最近最不常访问的数据
- * 此种缓存策略为框架默认提供,可自行实现其他缓存策略,如磁盘缓存,为框架或开发者提供缓存的功能
+ * LRU 鍗?Least Recently Used,鏈€杩戞渶灏戜娇鐢?涔熷氨鏄,褰撶紦瀛樻弧浜?浼氫紭鍏堟窐姹伴偅浜涙渶杩戞渶涓嶅父璁块棶鐨勬暟鎹? * 姝ょ缂撳瓨绛栫暐涓烘鏋堕粯璁ゆ彁渚?鍙嚜琛屽疄鐜板叾浠栫紦瀛樼瓥鐣?濡傜鐩樼紦瀛?涓烘鏋舵垨寮€鍙戣€呮彁渚涚紦瀛樼殑鍔熻兘
  *
  * @see HttpConfigModule#provideCacheFactory(Application)
  * @see Cache
@@ -27,7 +26,7 @@ public class LruCache<K, V> implements Cache<K, V> {
     /**
      * Constructor for LruCache.
      *
-     * @param size 这个缓存的最大 size,这个 size 所使用的单位必须和 {@link #getItemSize(Object)} 所使用的单位一致.
+     * @param size 杩欎釜缂撳瓨鐨勬渶澶?size,杩欎釜 size 鎵€浣跨敤鐨勫崟浣嶅繀椤诲拰 {@link #getItemSize(Object)} 鎵€浣跨敤鐨勫崟浣嶄竴鑷?
      */
     public LruCache(int size) {
         this.initialMaxSize = size;
@@ -35,10 +34,10 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 设置一个系数应用于当时构造函数中所传入的 size, 从而得到一个新的 {@link #maxSize}
-     * 并会立即调用 {@link #evict} 开始清除满足条件的条目
+     * 璁剧疆涓€涓郴鏁板簲鐢ㄤ簬褰撴椂鏋勯€犲嚱鏁颁腑鎵€浼犲叆鐨?size, 浠庤€屽緱鍒颁竴涓柊鐨?{@link #maxSize}
+     * 骞朵細绔嬪嵆璋冪敤 {@link #evict} 寮€濮嬫竻闄ゆ弧瓒虫潯浠剁殑鏉＄洰
      *
-     * @param multiplier 系数
+     * @param multiplier 绯绘暟
      */
     public synchronized void setSizeMultiplier(float multiplier) {
         if (multiplier < 0) {
@@ -49,28 +48,27 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 返回每个 {@code item} 所占用的 size,默认为1,这个 size 的单位必须和构造函数所传入的 size 一致
-     * 子类可以重写这个方法以适应不同的单位,比如说 bytes
+     * 杩斿洖姣忎釜 {@code item} 鎵€鍗犵敤鐨?size,榛樿涓?,杩欎釜 size 鐨勫崟浣嶅繀椤诲拰鏋勯€犲嚱鏁版墍浼犲叆鐨?size 涓€鑷?     * 瀛愮被鍙互閲嶅啓杩欎釜鏂规硶浠ラ€傚簲涓嶅悓鐨勫崟浣?姣斿璇?bytes
      *
-     * @param item 每个 {@code item} 所占用的 size
-     * @return 单个 item 的 {@code size}
+     * @param item 姣忎釜 {@code item} 鎵€鍗犵敤鐨?size
+     * @return 鍗曚釜 item 鐨?{@code size}
      */
     protected int getItemSize(V item) {
         return 1;
     }
 
     /**
-     * 当缓存中有被驱逐的条目时,会回调此方法,默认空实现,子类可以重写这个方法
+     * 褰撶紦瀛樹腑鏈夎椹遍€愮殑鏉＄洰鏃?浼氬洖璋冩鏂规硶,榛樿绌哄疄鐜?瀛愮被鍙互閲嶅啓杩欎釜鏂规硶
      *
-     * @param key   被驱逐条目的 {@code key}
-     * @param value 被驱逐条目的 {@code value}
+     * @param key   琚┍閫愭潯鐩殑 {@code key}
+     * @param value 琚┍閫愭潯鐩殑 {@code value}
      */
     protected void onItemEvicted(K key, V value) {
         // optional override
     }
 
     /**
-     * 返回当前缓存所能允许的最大 size
+     * 杩斿洖褰撳墠缂撳瓨鎵€鑳藉厑璁哥殑鏈€澶?size
      *
      * @return {@code maxSize}
      */
@@ -80,7 +78,7 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 返回当前缓存已占用的总 size
+     * 杩斿洖褰撳墠缂撳瓨宸插崰鐢ㄧ殑鎬?size
      *
      * @return {@code size}
      */
@@ -90,10 +88,10 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 如果这个 {@code key} 在缓存中有对应的 {@code value} 并且不为 {@code null},则返回 true
+     * 濡傛灉杩欎釜 {@code key} 鍦ㄧ紦瀛樹腑鏈夊搴旂殑 {@code value} 骞朵笖涓嶄负 {@code null},鍒欒繑鍥?true
      *
-     * @param key 用来映射的 {@code key}
-     * @return {@code true} 为在容器中含有这个 {@code key}, 否则为 {@code false}
+     * @param key 鐢ㄦ潵鏄犲皠鐨?{@code key}
+     * @return {@code true} 涓哄湪瀹瑰櫒涓惈鏈夎繖涓?{@code key}, 鍚﹀垯涓?{@code false}
      */
     @Override
     public synchronized boolean containsKey(K key) {
@@ -101,7 +99,7 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 返回当前缓存中含有的所有 {@code key}
+     * 杩斿洖褰撳墠缂撳瓨涓惈鏈夌殑鎵€鏈?{@code key}
      *
      * @return {@code keySet}
      */
@@ -111,9 +109,9 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 返回这个 {@code key} 在缓存中对应的 {@code value}, 如果返回 {@code null} 说明这个 {@code key} 没有对应的 {@code value}
+     * 杩斿洖杩欎釜 {@code key} 鍦ㄧ紦瀛樹腑瀵瑰簲鐨?{@code value}, 濡傛灉杩斿洖 {@code null} 璇存槑杩欎釜 {@code key} 娌℃湁瀵瑰簲鐨?{@code value}
      *
-     * @param key 用来映射的 {@code key}
+     * @param key 鐢ㄦ潵鏄犲皠鐨?{@code key}
      * @return {@code value}
      */
     @Override
@@ -123,15 +121,15 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 将 {@code key} 和 {@code value} 以条目的形式加入缓存,如果这个 {@code key} 在缓存中已经有对应的 {@code value}
-     * 则此 {@code value} 被新的 {@code value} 替换并返回,如果为 {@code null} 说明是一个新条目
+     * 灏?{@code key} 鍜?{@code value} 浠ユ潯鐩殑褰㈠紡鍔犲叆缂撳瓨,濡傛灉杩欎釜 {@code key} 鍦ㄧ紦瀛樹腑宸茬粡鏈夊搴旂殑 {@code value}
+     * 鍒欐 {@code value} 琚柊鐨?{@code value} 鏇挎崲骞惰繑鍥?濡傛灉涓?{@code null} 璇存槑鏄竴涓柊鏉＄洰
      * <p>
-     * 如果 {@link #getItemSize} 返回的 size 大于或等于缓存所能允许的最大 size, 则不能向缓存中添加此条目
-     * 此时会回调 {@link #onItemEvicted(Object, Object)} 通知此方法当前被驱逐的条目
+     * 濡傛灉 {@link #getItemSize} 杩斿洖鐨?size 澶т簬鎴栫瓑浜庣紦瀛樻墍鑳藉厑璁哥殑鏈€澶?size, 鍒欎笉鑳藉悜缂撳瓨涓坊鍔犳鏉＄洰
+     * 姝ゆ椂浼氬洖璋?{@link #onItemEvicted(Object, Object)} 閫氱煡姝ゆ柟娉曞綋鍓嶈椹遍€愮殑鏉＄洰
      *
-     * @param key   通过这个 {@code key} 添加条目
-     * @param value 需要添加的 {@code value}
-     * @return 如果这个 {@code key} 在容器中已经储存有 {@code value}, 则返回之前的 {@code value} 否则返回 {@code null}
+     * @param key   閫氳繃杩欎釜 {@code key} 娣诲姞鏉＄洰
+     * @param value 闇€瑕佹坊鍔犵殑 {@code value}
+     * @return 濡傛灉杩欎釜 {@code key} 鍦ㄥ鍣ㄤ腑宸茬粡鍌ㄥ瓨鏈?{@code value}, 鍒欒繑鍥炰箣鍓嶇殑 {@code value} 鍚﹀垯杩斿洖 {@code null}
      */
     @Override
     @Nullable
@@ -155,11 +153,10 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 移除缓存中这个 {@code key} 所对应的条目,并返回所移除条目的 {@code value}
-     * 如果返回为 {@code null} 则有可能时因为这个 {@code key} 对应的 {@code value} 为 {@code null} 或条目不存在
+     * 绉婚櫎缂撳瓨涓繖涓?{@code key} 鎵€瀵瑰簲鐨勬潯鐩?骞惰繑鍥炴墍绉婚櫎鏉＄洰鐨?{@code value}
+     * 濡傛灉杩斿洖涓?{@code null} 鍒欐湁鍙兘鏃跺洜涓鸿繖涓?{@code key} 瀵瑰簲鐨?{@code value} 涓?{@code null} 鎴栨潯鐩笉瀛樺湪
      *
-     * @param key 使用这个 {@code key} 移除对应的条目
-     * @return 如果这个 {@code key} 在容器中已经储存有 {@code value} 并且删除成功则返回删除的 {@code value}, 否则返回 {@code null}
+     * @param key 浣跨敤杩欎釜 {@code key} 绉婚櫎瀵瑰簲鐨勬潯鐩?     * @return 濡傛灉杩欎釜 {@code key} 鍦ㄥ鍣ㄤ腑宸茬粡鍌ㄥ瓨鏈?{@code value} 骞朵笖鍒犻櫎鎴愬姛鍒欒繑鍥炲垹闄ょ殑 {@code value}, 鍚﹀垯杩斿洖 {@code null}
      */
     @Override
     @Nullable
@@ -172,7 +169,7 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 清除缓存中所有的内容
+     * 娓呴櫎缂撳瓨涓墍鏈夌殑鍐呭
      */
     @Override
     public void clear() {
@@ -180,7 +177,7 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 当指定的 size 小于当前缓存已占用的总 size 时,会开始清除缓存中最近最少使用的条目
+     * 褰撴寚瀹氱殑 size 灏忎簬褰撳墠缂撳瓨宸插崰鐢ㄧ殑鎬?size 鏃?浼氬紑濮嬫竻闄ょ紦瀛樹腑鏈€杩戞渶灏戜娇鐢ㄧ殑鏉＄洰
      *
      * @param size {@code size}
      */
@@ -197,10 +194,11 @@ public class LruCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 当缓存中已占用的总 size 大于所能允许的最大 size ,会使用  {@link #trimToSize(int)} 开始清除满足条件的条目
+     * 褰撶紦瀛樹腑宸插崰鐢ㄧ殑鎬?size 澶т簬鎵€鑳藉厑璁哥殑鏈€澶?size ,浼氫娇鐢? {@link #trimToSize(int)} 寮€濮嬫竻闄ゆ弧瓒虫潯浠剁殑鏉＄洰
      */
     private void evict() {
         trimToSize(maxSize);
     }
 }
+
 

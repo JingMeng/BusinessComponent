@@ -1,7 +1,7 @@
-package com.from.view.refresh.listener;
+﻿package com.from.view.refresh.listener;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
 import com.from.view.refresh.api.RefreshLayout;
@@ -12,17 +12,16 @@ import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 import static android.support.annotation.RestrictTo.Scope.SUBCLASSES;
 
 /**
- * 刷新状态改变监听器
+ * 鍒锋柊鐘舵€佹敼鍙樼洃鍚櫒
  * Created by SCWANG on 2017/5/26.
  */
 
 public interface OnStateChangedListener {
     /**
-     * 状态改变事件 {@link RefreshState}
+     * 鐘舵€佹敼鍙樹簨浠?{@link RefreshState}
      * @param refreshLayout RefreshLayout
-     * @param oldState 改变之前的状态
-     * @param newState 改变之后的状态
-     */
+     * @param oldState 鏀瑰彉涔嬪墠鐨勭姸鎬?     * @param newState 鏀瑰彉涔嬪悗鐨勭姸鎬?     */
     @RestrictTo({LIBRARY,LIBRARY_GROUP,SUBCLASSES})
     void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState);
 }
+

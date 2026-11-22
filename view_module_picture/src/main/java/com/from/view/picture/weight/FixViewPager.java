@@ -1,14 +1,14 @@
-package com.from.view.picture.weight;
+﻿package com.from.view.picture.weight;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * 在使用photoView缩放时避免异常的出现
+ * 鍦ㄤ娇鐢╬hotoView缂╂斁鏃堕伩鍏嶅紓甯哥殑鍑虹幇
  * <p>
  * author: ym.li
  * since: 2018/11/3
@@ -34,3 +34,4 @@ public class FixViewPager extends ViewPager {
         }
     }
 }
+

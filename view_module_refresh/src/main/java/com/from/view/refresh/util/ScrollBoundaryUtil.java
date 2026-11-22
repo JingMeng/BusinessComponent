@@ -1,32 +1,32 @@
-package com.from.view.refresh.util;
+﻿package com.from.view.refresh.util;
 
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 
 /**
- * 滚动边界
+ * 婊氬姩杈圭晫
  * Created by SCWANG on 2017/7/8.
  */
 
 @SuppressWarnings("WeakerAccess")
 public class ScrollBoundaryUtil {
 
-    //<editor-fold desc="滚动判断">
+    //<editor-fold desc="婊氬姩鍒ゆ柇">
 
     /**
-     * 判断内容是否可以刷新
-     * @param targetView 内容视图
-     * @param touch 按压事件位置
-     * @return 是否可以刷新
+     * 鍒ゆ柇鍐呭鏄惁鍙互鍒锋柊
+     * @param targetView 鍐呭瑙嗗浘
+     * @param touch 鎸夊帇浜嬩欢浣嶇疆
+     * @return 鏄惁鍙互鍒锋柊
      */
     public static boolean canRefresh(@NonNull View targetView, PointF touch) {
         if (canScrollUp(targetView) && targetView.getVisibility() == View.VISIBLE) {
             return false;
         }
-        //touch == null 时 canRefresh 不会动态递归搜索
+        //touch == null 鏃?canRefresh 涓嶄細鍔ㄦ€侀€掑綊鎼滅储
         if (targetView instanceof ViewGroup && touch != null) {
             ViewGroup viewGroup = (ViewGroup) targetView;
             final int childCount = viewGroup.getChildCount();
@@ -48,17 +48,17 @@ public class ScrollBoundaryUtil {
     }
 
     /**
-     * 判断内容视图是否可以加载更多
-     * @param targetView 内容视图
-     * @param touch 按压事件位置
-     * @param contentFull 内容是否填满页面 (未填满时，会通过canScrollUp自动判断)
-     * @return 是否可以刷新
+     * 鍒ゆ柇鍐呭瑙嗗浘鏄惁鍙互鍔犺浇鏇村
+     * @param targetView 鍐呭瑙嗗浘
+     * @param touch 鎸夊帇浜嬩欢浣嶇疆
+     * @param contentFull 鍐呭鏄惁濉弧椤甸潰 (鏈～婊℃椂锛屼細閫氳繃canScrollUp鑷姩鍒ゆ柇)
+     * @return 鏄惁鍙互鍒锋柊
      */
     public static boolean canLoadMore(@NonNull View targetView, PointF touch, boolean contentFull) {
         if (canScrollDown(targetView) && targetView.getVisibility() == View.VISIBLE) {
             return false;
         }
-        //touch == null 时 canLoadMore 不会动态递归搜索
+        //touch == null 鏃?canLoadMore 涓嶄細鍔ㄦ€侀€掑綊鎼滅储
         if (targetView instanceof ViewGroup && touch != null && !SmartUtil.isScrollableView(targetView)) {
             ViewGroup viewGroup = (ViewGroup) targetView;
             final int childCount = viewGroup.getChildCount();
@@ -83,7 +83,7 @@ public class ScrollBoundaryUtil {
 //        if (canScrollDown(targetView) && targetView.getVisibility() == View.VISIBLE) {
 //            return true;
 //        }
-//        //event == null 时 canScrollDown 不会动态递归搜索
+//        //event == null 鏃?canScrollDown 涓嶄細鍔ㄦ€侀€掑綊鎼滅储
 //        if (targetView instanceof ViewGroup && event != null) {
 //            ViewGroup viewGroup = (ViewGroup) targetView;
 //            final int childCount = viewGroup.getChildCount();
@@ -172,3 +172,4 @@ public class ScrollBoundaryUtil {
     //</editor-fold>
 
 }
+

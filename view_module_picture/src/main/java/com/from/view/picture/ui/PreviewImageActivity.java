@@ -1,14 +1,14 @@
-package com.from.view.picture.ui;
+﻿package com.from.view.picture.ui;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.Window;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import static com.from.view.picture.ui.SelectImageActivity.RESULT_IMAGES;
 
 /**
- * 预览图片的Activity
+ * 棰勮鍥剧墖鐨凙ctivity
  * <p>
  * author: ym.li
  * since: 2018/11/3
@@ -67,7 +67,7 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
     }
 
     /**
-     * 修改状态栏颜色
+     * 淇敼鐘舵€佹爮棰滆壊
      */
     private void setStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -97,13 +97,12 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
     }
 
     private void registerListener() {
-        //选中当前图片按钮
+        //閫変腑褰撳墠鍥剧墖鎸夐挳
         mPreViewCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //文件大小是否超过最大设置
-                boolean overMaxLength = false;
+                //鏂囦欢澶у皬鏄惁瓒呰繃鏈€澶ц缃?                boolean overMaxLength = false;
                 if (mSelectorSpec.getMaxLength() > 0) {
                     ArrayList<ImageItem> imageItemList = mSelectImageHelper.getAllImageItem();
                     if (imageItemList != null && !imageItemList.isEmpty()) {
@@ -112,8 +111,7 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
                     }
                 }
                 if (overMaxLength) {
-                    //选择文件大小超出最大设置
-                    Toast.makeText(getApplicationContext(),
+                    //閫夋嫨鏂囦欢澶у皬瓒呭嚭鏈€澶ц缃?                    Toast.makeText(getApplicationContext(),
                             String.format(getString(R.string.maven_picture_max_length),
                                     Formatter.formatShortFileSize(getApplicationContext(),
                                             mSelectorSpec.getMaxLength())),
@@ -135,7 +133,7 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
                 }
             }
         });
-        //viewPager切换事件
+        //viewPager鍒囨崲浜嬩欢
         mPreViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -144,7 +142,7 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
                 resetImageTitle(position);
             }
         });
-        //完成选择图片按钮
+        //瀹屾垚閫夋嫨鍥剧墖鎸夐挳
         mSelectCompleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,7 +213,7 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
     }
 
     /**
-     * 显示头部和尾部栏
+     * 鏄剧ず澶撮儴鍜屽熬閮ㄦ爮
      */
     private void showOrHideBar() {
         if (!mHideTitleBar) {
@@ -228,3 +226,4 @@ public class PreviewImageActivity extends AppCompatActivity implements OnPhotoTa
         mHideTitleBar = !mHideTitleBar;
     }
 }
+

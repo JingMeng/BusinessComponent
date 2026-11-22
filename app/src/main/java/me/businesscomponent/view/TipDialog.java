@@ -1,12 +1,12 @@
-package me.businesscomponent.view;
+﻿package me.businesscomponent.view;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.IntDef;
-import android.support.annotation.LayoutRes;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.IntDef;
+import androidx.annotation.LayoutRes;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -26,7 +26,7 @@ import me.businesscomponent.R;
 import me.businesscomponent.utils.ScreenUtils;
 
 /**
- * 一些基本样式的dialog
+ * 涓€浜涘熀鏈牱寮忕殑dialog
  *
  * @author ym.li
  * @version 1.2.0
@@ -39,19 +39,17 @@ public class TipDialog extends Dialog {
     private static final int DIALOG_MIN_SIZE = 90;
 
     /**
-     * 构造器
+     * 鏋勯€犲櫒
      *
-     * @param context 上下文
-     */
+     * @param context 涓婁笅鏂?     */
     public TipDialog(Context context) {
         this(context, R.style.TipDialog);
     }
 
     /**
-     * 构造器
+     * 鏋勯€犲櫒
      *
-     * @param context    上下文
-     * @param themeResId 主題資源
+     * @param context    涓婁笅鏂?     * @param themeResId 涓婚璩囨簮
      */
     public TipDialog(Context context, int themeResId) {
         super(context, themeResId);
@@ -74,37 +72,37 @@ public class TipDialog extends Dialog {
     }
 
     /**
-     * 生成默认的 {@link TipDialog}
+     * 鐢熸垚榛樿鐨?{@link TipDialog}
      * <p>
-     * 提供了一个图标和一行文字的样式, 其中图标有几种类型可选。见 {@link IconType}
+     * 鎻愪緵浜嗕竴涓浘鏍囧拰涓€琛屾枃瀛楃殑鏍峰紡, 鍏朵腑鍥炬爣鏈夊嚑绉嶇被鍨嬪彲閫夈€傝 {@link IconType}
      * </p>
      *
      * @see CustomBuilder
      */
     public static class Builder {
         /**
-         * 不显示任何icon
+         * 涓嶆樉绀轰换浣昳con
          */
         public static final int ICON_TYPE_NOTHING = 0;
         /**
-         * 显示 Loading 图标
+         * 鏄剧ず Loading 鍥炬爣
          */
         public static final int ICON_TYPE_LOADING = 1;
         /**
-         * 显示成功图标
+         * 鏄剧ず鎴愬姛鍥炬爣
          */
         public static final int ICON_TYPE_SUCCESS = 2;
         /**
-         * 显示失败图标
+         * 鏄剧ず澶辫触鍥炬爣
          */
         public static final int ICON_TYPE_FAIL = 3;
         /**
-         * 显示信息图标
+         * 鏄剧ず淇℃伅鍥炬爣
          */
         public static final int ICON_TYPE_INFO = 4;
 
         /**
-         * 限定类型
+         * 闄愬畾绫诲瀷
          */
         @IntDef({ICON_TYPE_NOTHING, ICON_TYPE_LOADING, ICON_TYPE_SUCCESS, ICON_TYPE_FAIL, ICON_TYPE_INFO})
         @Retention(RetentionPolicy.SOURCE)
@@ -119,50 +117,45 @@ public class TipDialog extends Dialog {
         private CharSequence mTipWord;
 
         /**
-         * 构造器
+         * 鏋勯€犲櫒
          *
-         * @param context 上下文
-         */
+         * @param context 涓婁笅鏂?         */
         public Builder(Context context) {
             mContext = context;
         }
 
         /**
-         * 设置 icon 显示的内容
-         *
-         * @param iconType icon类型
-         * @return 当前类
-         */
+         * 璁剧疆 icon 鏄剧ず鐨勫唴瀹?         *
+         * @param iconType icon绫诲瀷
+         * @return 褰撳墠绫?         */
         public Builder setIconType(@IconType int iconType) {
             mCurrentIconType = iconType;
             return this;
         }
 
         /**
-         * 设置显示的文案
-         *
-         * @param tipWord 提示文案
-         * @return 当前类
-         */
+         * 璁剧疆鏄剧ず鐨勬枃妗?         *
+         * @param tipWord 鎻愮ず鏂囨
+         * @return 褰撳墠绫?         */
         public Builder setTipWord(CharSequence tipWord) {
             mTipWord = tipWord;
             return this;
         }
 
         /**
-         * 创建TipDialog
+         * 鍒涘缓TipDialog
          *
-         * @return 返回TipDialog
+         * @return 杩斿洖TipDialog
          */
         public TipDialog create() {
             return create(true);
         }
 
         /**
-         * 创建 Dialog, 但没有弹出来, 如果要弹出来, 请调用返回值的 {@link Dialog#show()} 方法
+         * 鍒涘缓 Dialog, 浣嗘病鏈夊脊鍑烘潵, 濡傛灉瑕佸脊鍑烘潵, 璇疯皟鐢ㄨ繑鍥炲€肩殑 {@link Dialog#show()} 鏂规硶
          *
-         * @param cancelable 按系统返回键是否可以取消
-         * @return 创建的 Dialog
+         * @param cancelable 鎸夌郴缁熻繑鍥為敭鏄惁鍙互鍙栨秷
+         * @return 鍒涘缓鐨?Dialog
          */
         public TipDialog create(boolean cancelable) {
             TipDialog dialog = new TipDialog(mContext);
@@ -220,36 +213,34 @@ public class TipDialog extends Dialog {
     }
 
     /**
-     * 传入自定义的布局并使用这个布局生成 TipDialog
+     * 浼犲叆鑷畾涔夌殑甯冨眬骞朵娇鐢ㄨ繖涓竷灞€鐢熸垚 TipDialog
      */
     public static class CustomBuilder {
         private Context mContext;
         private int mContentLayoutId;
 
         /**
-         * 构造器
+         * 鏋勯€犲櫒
          *
-         * @param context 上下文
-         */
+         * @param context 涓婁笅鏂?         */
         public CustomBuilder(Context context) {
             mContext = context;
         }
 
         /**
-         * 自定义布局id
+         * 鑷畾涔夊竷灞€id
          *
-         * @param layoutId 布局文件id
-         * @return 返回当前类
-         */
+         * @param layoutId 甯冨眬鏂囦欢id
+         * @return 杩斿洖褰撳墠绫?         */
         public CustomBuilder setContent(@LayoutRes int layoutId) {
             mContentLayoutId = layoutId;
             return this;
         }
 
         /**
-         * 创建 Dialog, 但没有弹出来, 如果要弹出来, 请调用返回值的 {@link Dialog#show()} 方法
+         * 鍒涘缓 Dialog, 浣嗘病鏈夊脊鍑烘潵, 濡傛灉瑕佸脊鍑烘潵, 璇疯皟鐢ㄨ繑鍥炲€肩殑 {@link Dialog#show()} 鏂规硶
          *
-         * @return 创建的 Dialog
+         * @return 鍒涘缓鐨?Dialog
          */
         public TipDialog create() {
             TipDialog dialog = new TipDialog(mContext);
@@ -260,3 +251,4 @@ public class TipDialog extends Dialog {
         }
     }
 }
+

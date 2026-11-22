@@ -1,45 +1,45 @@
-package com.from.business.http.integration;
+﻿package com.from.business.http.integration;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * ================================================
- * 用来管理网络请求层,以及数据缓存层,以后可能添加数据库请求层
+ * 鐢ㄦ潵绠＄悊缃戠粶璇锋眰灞?浠ュ強鏁版嵁缂撳瓨灞?浠ュ悗鍙兘娣诲姞鏁版嵁搴撹姹傚眰
  * <p>
  * ================================================
  */
 public interface IRepositoryManager {
     /**
-     * 根据传入的 Class 获取对应的 Retrofit service
+     * 鏍规嵁浼犲叆鐨?Class 鑾峰彇瀵瑰簲鐨?Retrofit service
      *
      * @param service Retrofit service class
-     * @param <T>     Retrofit service 类型
+     * @param <T>     Retrofit service 绫诲瀷
      * @return Retrofit service
      */
     @NonNull
     <T> T obtainRetrofitService(@NonNull Class<T> service);
 
     /**
-     * 根据传入的 Class 获取对应的 RxCache service
+     * 鏍规嵁浼犲叆鐨?Class 鑾峰彇瀵瑰簲鐨?RxCache service
      *
      * @param cache RxCache service class
-     * @param <T>   RxCache service 类型
+     * @param <T>   RxCache service 绫诲瀷
      * @return RxCache service
      */
     @NonNull
     <T> T obtainCacheService(@NonNull Class<T> cache);
 
     /**
-     * 清理所有缓存
-     */
+     * 娓呯悊鎵€鏈夌紦瀛?     */
     void clearAllCache();
 
     /**
-     * 获取 {@link Context}
+     * 鑾峰彇 {@link Context}
      *
      * @return {@link Context}
      */
     @NonNull
     Context getContext();
 }
+

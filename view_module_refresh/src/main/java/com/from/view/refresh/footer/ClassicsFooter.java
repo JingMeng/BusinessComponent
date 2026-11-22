@@ -1,9 +1,9 @@
-package com.from.view.refresh.footer;
+﻿package com.from.view.refresh.footer;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -19,28 +19,28 @@ import com.from.view.refresh.internal.ProgressDrawable;
 import com.from.view.refresh.util.DensityUtil;
 
 /**
- * 经典上拉底部组件
+ * 缁忓吀涓婃媺搴曢儴缁勪欢
  * Created by SCWANG on 2017/5/28.
  */
 
 @SuppressWarnings({"unused", "UnusedReturnValue", "deprecation"})
 public class ClassicsFooter extends InternalClassics<ClassicsFooter> implements RefreshFooter {
 
-    public static String REFRESH_FOOTER_PULLING = null;//"上拉加载更多";
-    public static String REFRESH_FOOTER_RELEASE = null;//"释放立即加载";
-    public static String REFRESH_FOOTER_LOADING = null;//"正在加载...";
-    public static String REFRESH_FOOTER_REFRESHING = null;//"正在刷新...";
-    public static String REFRESH_FOOTER_FINISH = null;//"加载完成";
-    public static String REFRESH_FOOTER_FAILED = null;//"加载失败";
-    public static String REFRESH_FOOTER_NOTHING = null;//"没有更多数据了";
+    public static String REFRESH_FOOTER_PULLING = null;//"涓婃媺鍔犺浇鏇村";
+    public static String REFRESH_FOOTER_RELEASE = null;//"閲婃斁绔嬪嵆鍔犺浇";
+    public static String REFRESH_FOOTER_LOADING = null;//"姝ｅ湪鍔犺浇...";
+    public static String REFRESH_FOOTER_REFRESHING = null;//"姝ｅ湪鍒锋柊...";
+    public static String REFRESH_FOOTER_FINISH = null;//"鍔犺浇瀹屾垚";
+    public static String REFRESH_FOOTER_FAILED = null;//"鍔犺浇澶辫触";
+    public static String REFRESH_FOOTER_NOTHING = null;//"娌℃湁鏇村鏁版嵁浜?;
 
-    protected String mTextPulling = null;//"上拉加载更多";
-    protected String mTextRelease = null;//"释放立即加载";
-    protected String mTextLoading = null;//"正在加载...";
-    protected String mTextRefreshing = null;//"正在刷新...";
-    protected String mTextFinish = null;//"加载完成";
-    protected String mTextFailed = null;//"加载失败";
-    protected String mTextNothing = null;//"没有更多数据了";
+    protected String mTextPulling = null;//"涓婃媺鍔犺浇鏇村";
+    protected String mTextRelease = null;//"閲婃斁绔嬪嵆鍔犺浇";
+    protected String mTextLoading = null;//"姝ｅ湪鍔犺浇...";
+    protected String mTextRefreshing = null;//"姝ｅ湪鍒锋柊...";
+    protected String mTextFinish = null;//"鍔犺浇瀹屾垚";
+    protected String mTextFailed = null;//"鍔犺浇澶辫触";
+    protected String mTextNothing = null;//"娌℃湁鏇村鏁版嵁浜?;
 
     protected boolean mNoMoreData = false;
 
@@ -201,7 +201,7 @@ public class ClassicsFooter extends InternalClassics<ClassicsFooter> implements 
     }
 
     /**
-     * ClassicsFooter 在(SpinnerStyle.FixedBehind)时才有主题色
+     * ClassicsFooter 鍦?SpinnerStyle.FixedBehind)鏃舵墠鏈変富棰樿壊
      */
     @Override@Deprecated
     public void setPrimaryColors(@ColorInt int ... colors) {
@@ -211,7 +211,7 @@ public class ClassicsFooter extends InternalClassics<ClassicsFooter> implements 
     }
 
     /**
-     * 设置数据全部加载完成，将不能再次触发加载功能
+     * 璁剧疆鏁版嵁鍏ㄩ儴鍔犺浇瀹屾垚锛屽皢涓嶈兘鍐嶆瑙﹀彂鍔犺浇鍔熻兘
      */
     @Override
     public boolean setNoMoreData(boolean noMoreData) {
@@ -259,3 +259,4 @@ public class ClassicsFooter extends InternalClassics<ClassicsFooter> implements 
     //</editor-fold>
 
 }
+

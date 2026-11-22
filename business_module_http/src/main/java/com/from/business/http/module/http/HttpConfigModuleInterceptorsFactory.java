@@ -1,6 +1,6 @@
-package com.from.business.http.module.http;
+﻿package com.from.business.http.module.http;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -35,3 +35,4 @@ public final class HttpConfigModuleInterceptorsFactory
         return instance.provideInterceptors();
     }
 }
+

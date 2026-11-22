@@ -1,4 +1,4 @@
-package com.from.view.picture.data;
+﻿package com.from.view.picture.data;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 import com.from.view.picture.bean.ImageFolder;
 import com.from.view.picture.bean.ImageItem;
@@ -17,26 +17,24 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 获取系统相册中的图片
+ * 鑾峰彇绯荤粺鐩稿唽涓殑鍥剧墖
  *
  * @author ym.li
  * @version 2.9.1
- * @since 2018年11月12日11:13:19
+ * @since 2018骞?1鏈?2鏃?1:13:19
  */
 public class ImageDataSource {
     /**
-     * 从SDCard加载图片
+     * 浠嶴DCard鍔犺浇鍥剧墖
      *
-     * @param context  上下文
-     * @param callback DataCallback
+     * @param context  涓婁笅鏂?     * @param callback DataCallback
      */
     public static void loadImageForSDCard(final Context context, final DataCallback callback) {
-        //由于扫描图片是耗时的操作，所以要在子线程处理。
-        new Thread(new Runnable() {
+        //鐢变簬鎵弿鍥剧墖鏄€楁椂鐨勬搷浣滐紝鎵€浠ヨ鍦ㄥ瓙绾跨▼澶勭悊銆?        new Thread(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void run() {
-                //扫描图片
+                //鎵弿鍥剧墖
                 Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
                 ContentResolver mContentResolver = context.getContentResolver();
                 Cursor mCursor = mContentResolver.query(mImageUri, new String[]{
@@ -52,25 +50,22 @@ public class ImageDataSource {
                     null,
                     MediaStore.Images.Media.DATE_ADDED);
                 ArrayList<ImageItem> images = new ArrayList<>();
-                //读取扫描到的图片
+                //璇诲彇鎵弿鍒扮殑鍥剧墖
                 if (mCursor != null) {
                     while (mCursor.moveToNext()) {
-                        // 获取图片的路径
-                        String path = mCursor.getString(mCursor.getColumnIndex(MediaStore.Images.Media.DATA));
-                        //获取图片名称
+                        // 鑾峰彇鍥剧墖鐨勮矾寰?                        String path = mCursor.getString(mCursor.getColumnIndex(MediaStore.Images.Media.DATA));
+                        //鑾峰彇鍥剧墖鍚嶇О
                         String name = mCursor.getString(mCursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
-                        //获取图片时间
+                        //鑾峰彇鍥剧墖鏃堕棿
                         long time = mCursor.getLong(mCursor.getColumnIndex(MediaStore.Images.Media.DATE_ADDED));
-                        //获取图片类型
+                        //鑾峰彇鍥剧墖绫诲瀷
                         String mimeType = mCursor.getString(mCursor.getColumnIndex(MediaStore.Images.Media.MIME_TYPE));
-                        //获取图片宽度
+                        //鑾峰彇鍥剧墖瀹藉害
                         int width = mCursor.getInt(mCursor.getColumnIndex(MediaStore.Images.Media.WIDTH));
-                        //获取图片宽度
+                        //鑾峰彇鍥剧墖瀹藉害
                         int height = mCursor.getInt(mCursor.getColumnIndex(MediaStore.Images.Media.HEIGHT));
-                        //获取图片的大小
-                        int size = mCursor.getInt(mCursor.getColumnIndex(MediaStore.Images.Media.SIZE));
-                        //过滤未下载完成或者不存在的文件
-                        if (!"downloading".equals(getExtensionName(path)) && checkImgExists(path)) {
+                        //鑾峰彇鍥剧墖鐨勫ぇ灏?                        int size = mCursor.getInt(mCursor.getColumnIndex(MediaStore.Images.Media.SIZE));
+                        //杩囨护鏈笅杞藉畬鎴愭垨鑰呬笉瀛樺湪鐨勬枃浠?                        if (!"downloading".equals(getExtensionName(path)) && checkImgExists(path)) {
                             images.add(new ImageItem(path, time, name, mimeType, width, height, size));
                         }
                     }
@@ -83,8 +78,7 @@ public class ImageDataSource {
     }
 
     /**
-     * Java文件操作 获取文件扩展名
-     */
+     * Java鏂囦欢鎿嶄綔 鑾峰彇鏂囦欢鎵╁睍鍚?     */
     private static String getExtensionName(String filename) {
         if (filename != null && filename.length() > 0) {
             int dot = filename.lastIndexOf('.');
@@ -96,24 +90,22 @@ public class ImageDataSource {
     }
 
     /**
-     * 检查图片是否存在。ContentResolver查询处理的数据有可能文件路径并不存在。
-     *
-     * @param filePath 文件路径
-     * @return 文件夹是否存在
-     */
+     * 妫€鏌ュ浘鐗囨槸鍚﹀瓨鍦ㄣ€侰ontentResolver鏌ヨ澶勭悊鐨勬暟鎹湁鍙兘鏂囦欢璺緞骞朵笉瀛樺湪銆?     *
+     * @param filePath 鏂囦欢璺緞
+     * @return 鏂囦欢澶规槸鍚﹀瓨鍦?     */
     private static boolean checkImgExists(String filePath) {
         return new File(filePath).exists();
     }
 
     /**
-     * 把图片按文件夹拆分，第一个文件夹保存所有的图片
+     * 鎶婂浘鐗囨寜鏂囦欢澶规媶鍒嗭紝绗竴涓枃浠跺す淇濆瓨鎵€鏈夌殑鍥剧墖
      *
-     * @param images 图片文件
-     * @return 返回图片文件集合
+     * @param images 鍥剧墖鏂囦欢
+     * @return 杩斿洖鍥剧墖鏂囦欢闆嗗悎
      */
     private static ArrayList<ImageFolder> splitFolder(ArrayList<ImageItem> images) {
         ArrayList<ImageFolder> folders = new ArrayList<>();
-        folders.add(new ImageFolder("全部图片", images));
+        folders.add(new ImageFolder("鍏ㄩ儴鍥剧墖", images));
         if (images != null && !images.isEmpty()) {
             int size = images.size();
             for (int i = 0; i < size; i++) {
@@ -129,11 +121,10 @@ public class ImageDataSource {
     }
 
     /**
-     * 根据图片路径，获取图片文件夹名称
+     * 鏍规嵁鍥剧墖璺緞锛岃幏鍙栧浘鐗囨枃浠跺す鍚嶇О
      *
-     * @param path 图片路径
-     * @return 返回文件夹路径
-     */
+     * @param path 鍥剧墖璺緞
+     * @return 杩斿洖鏂囦欢澶硅矾寰?     */
     private static String getFolderName(String path) {
         if (null != path && path.length() > 0) {
             String[] strings = path.split(File.separator);
@@ -160,14 +151,15 @@ public class ImageDataSource {
     }
 
     /**
-     * 资源加载回调
+     * 璧勬簮鍔犺浇鍥炶皟
      */
     public interface DataCallback {
         /**
-         * 获取相册图片资源回调
+         * 鑾峰彇鐩稿唽鍥剧墖璧勬簮鍥炶皟
          *
          * @param folders List
          */
         void onSuccess(ArrayList<ImageFolder> folders);
     }
 }
+

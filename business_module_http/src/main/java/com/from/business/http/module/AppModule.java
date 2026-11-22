@@ -1,9 +1,9 @@
-package com.from.business.http.module;
+﻿package com.from.business.http.module;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.cache.Cache;
 import com.from.business.http.cache.CacheType;
@@ -14,7 +14,7 @@ import com.google.gson.GsonBuilder;
 
 /**
  * ================================================
- * 提供一些框架必须的实例的 {@link  }
+ * 鎻愪緵涓€浜涙鏋跺繀椤荤殑瀹炰緥鐨?{@link  }
  * <p>
  * ================================================
  */
@@ -36,3 +36,4 @@ public abstract class AppModule {
         void configGson(@NonNull Context context, @NonNull GsonBuilder builder);
     }
 }
+

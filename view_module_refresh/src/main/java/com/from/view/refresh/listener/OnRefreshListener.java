@@ -1,14 +1,14 @@
-package com.from.view.refresh.listener;
+﻿package com.from.view.refresh.listener;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.from.view.refresh.api.RefreshLayout;
 
 /**
- * 刷新监听器
- * Created by SCWANG on 2017/5/26.
+ * 鍒锋柊鐩戝惉鍣? * Created by SCWANG on 2017/5/26.
  */
 
 public interface OnRefreshListener {
     void onRefresh(@NonNull RefreshLayout refreshLayout);
 }
+

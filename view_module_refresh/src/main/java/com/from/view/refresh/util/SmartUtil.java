@@ -1,15 +1,15 @@
-package com.from.view.refresh.util;
+﻿package com.from.view.refresh.util;
 
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.ScrollingView;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -106,3 +106,4 @@ public abstract class SmartUtil {
         }
     }
 }
+

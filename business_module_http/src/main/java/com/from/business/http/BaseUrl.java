@@ -1,22 +1,22 @@
-package com.from.business.http;
+﻿package com.from.business.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import okhttp3.HttpUrl;
 
 /**
  * ================================================
- * 针对于 BaseUrl 在 App 启动时不能确定,需要请求服务器接口动态获取的应用场景
+ * 閽堝浜?BaseUrl 鍦?App 鍚姩鏃朵笉鑳界‘瀹?闇€瑕佽姹傛湇鍔″櫒鎺ュ彛鍔ㄦ€佽幏鍙栫殑搴旂敤鍦烘櫙
  * <p>
  * Created by JessYan on 11/07/2017 14:58
  * ================================================
  */
 public interface BaseUrl {
     /**
-     * 在调用 Retrofit API 接口之前,使用 Okhttp 或其他方式,请求到正确的 BaseUrl 并通过此方法返回
-     *
+     * 鍦ㄨ皟鐢?Retrofit API 鎺ュ彛涔嬪墠,浣跨敤 Okhttp 鎴栧叾浠栨柟寮?璇锋眰鍒版纭殑 BaseUrl 骞堕€氳繃姝ゆ柟娉曡繑鍥?     *
      * @return
      */
     @NonNull
     HttpUrl url();
 }
+

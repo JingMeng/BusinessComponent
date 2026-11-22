@@ -1,6 +1,6 @@
-package com.from.business.http.utils;
+﻿package com.from.business.http.utils;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * ================================================
@@ -160,3 +160,4 @@ public final class Preconditions {
         return builder.toString();
     }
 }
+

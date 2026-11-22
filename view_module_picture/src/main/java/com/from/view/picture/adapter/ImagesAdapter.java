@@ -1,9 +1,9 @@
-package com.from.view.picture.adapter;
+﻿package com.from.view.picture.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +21,7 @@ import com.from.view.picture.weight.SuperCheckBox;
 import java.util.List;
 
 /**
- * Doc  相册图片Adapter
+ * Doc  鐩稿唽鍥剧墖Adapter
  *
  * @author ym.li
  * @version 2.9.0
@@ -115,8 +115,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 @Override
                 public void onClick(View v) {
                     if (mSelectorSpec.getMaxLength() > 0 && item.size > mSelectorSpec.getMaxLength()) {
-                        //选择文件大小超出最大设置
-                        Toast.makeText(mContext,
+                        //閫夋嫨鏂囦欢澶у皬瓒呭嚭鏈€澶ц缃?                        Toast.makeText(mContext,
                             String.format(mContext.getString(R.string.maven_picture_max_length),
                                 Formatter.formatShortFileSize(mContext, mSelectorSpec.getMaxLength())),
                             Toast.LENGTH_SHORT).show();
@@ -217,7 +216,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mMaskView = itemView.findViewById(R.id.mask);
             mFrameLayout = itemView.findViewById(R.id.fl_container);
 
-            //设置点击面积为1/4
+            //璁剧疆鐐瑰嚮闈㈢Н涓?/4
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mFrameLayout.getLayoutParams();
             int width = getImageResize(mContext) / 4;
             layoutParams.width = width;
@@ -226,3 +225,4 @@ public class ImagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 }
+

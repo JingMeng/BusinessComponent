@@ -1,6 +1,6 @@
-package com.from.business.http.log;
+﻿package com.from.business.http.log;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.HttpHandler;
 import com.from.business.http.module.http.HttpConfigModule;
@@ -26,9 +26,8 @@ import okio.BufferedSource;
 
 /**
  * ================================================
- * 解析框架中的网络请求和响应结果,并以日志形式输出,调试神器
- * 可使用 {@link HttpConfigModule.Builder#printHttpLogLevel(Level)} 控制或关闭日志
- * <p>
+ * 瑙ｆ瀽妗嗘灦涓殑缃戠粶璇锋眰鍜屽搷搴旂粨鏋?骞朵互鏃ュ織褰㈠紡杈撳嚭,璋冭瘯绁炲櫒
+ * 鍙娇鐢?{@link HttpConfigModule.Builder#printHttpLogLevel(Level)} 鎺у埗鎴栧叧闂棩蹇? * <p>
  * ================================================
  */
 public class RequestInterceptor implements Interceptor {
@@ -39,20 +38,17 @@ public class RequestInterceptor implements Interceptor {
 
     public enum Level {
         /**
-         * 不打印log
+         * 涓嶆墦鍗發og
          */
         NONE,
         /**
-         * 只打印请求信息
-         */
+         * 鍙墦鍗拌姹備俊鎭?         */
         REQUEST,
         /**
-         * 只打印响应信息
-         */
+         * 鍙墦鍗板搷搴斾俊鎭?         */
         RESPONSE,
         /**
-         * 所有数据全部打印
-         */
+         * 鎵€鏈夋暟鎹叏閮ㄦ墦鍗?         */
         ALL
     }
 
@@ -66,7 +62,7 @@ public class RequestInterceptor implements Interceptor {
         boolean logRequest = printLevel == Level.ALL || (printLevel != Level.NONE && printLevel == Level.REQUEST);
 
         if (logRequest) {
-            //打印请求信息
+            //鎵撳嵃璇锋眰淇℃伅
             if (request.body() != null && isParseable(request.body().contentType())) {
                 mPrinter.printJsonRequest(request, parseParams(request));
             } else {
@@ -88,7 +84,7 @@ public class RequestInterceptor implements Interceptor {
 
         ResponseBody responseBody = originalResponse.body();
 
-        //打印响应结果
+        //鎵撳嵃鍝嶅簲缁撴灉
         String bodyString = null;
         if (responseBody != null && isParseable(responseBody.contentType())) {
             bodyString = printResult(request, originalResponse, logResponse);
@@ -111,37 +107,36 @@ public class RequestInterceptor implements Interceptor {
             }
         }
 
-        if (mHandler != null)//这里可以比客户端提前一步拿到服务器返回的结果,可以做一些操作,比如token超时,重新获取
+        if (mHandler != null)//杩欓噷鍙互姣斿鎴风鎻愬墠涓€姝ユ嬁鍒版湇鍔″櫒杩斿洖鐨勭粨鏋?鍙互鍋氫竴浜涙搷浣?姣斿token瓒呮椂,閲嶆柊鑾峰彇
             return mHandler.onHttpResultResponse(bodyString, chain, originalResponse);
 
         return originalResponse;
     }
 
     /**
-     * 打印响应结果
+     * 鎵撳嵃鍝嶅簲缁撴灉
      *
      * @param request     {@link Request}
      * @param response    {@link Response}
-     * @param logResponse 是否打印响应结果
-     * @return 解析后的响应结果
+     * @param logResponse 鏄惁鎵撳嵃鍝嶅簲缁撴灉
+     * @return 瑙ｆ瀽鍚庣殑鍝嶅簲缁撴灉
      */
     @Nullable
     private String printResult(Request request, Response response, boolean logResponse) {
         try {
-            //读取服务器返回的结果
+            //璇诲彇鏈嶅姟鍣ㄨ繑鍥炵殑缁撴灉
             ResponseBody responseBody = response.newBuilder().build().body();
             BufferedSource source = responseBody.source();
             source.request(Long.MAX_VALUE); // Buffer the entire body.
             Buffer buffer = source.buffer();
 
-            //获取content的压缩类型
-            String encoding = response
+            //鑾峰彇content鐨勫帇缂╃被鍨?            String encoding = response
                 .headers()
                 .get("Content-Encoding");
 
             Buffer clone = buffer.clone();
 
-            //解析response content
+            //瑙ｆ瀽response content
             return parseContent(responseBody, encoding, clone);
         } catch (IOException e) {
             e.printStackTrace();
@@ -150,12 +145,11 @@ public class RequestInterceptor implements Interceptor {
     }
 
     /**
-     * 解析服务器响应的内容
+     * 瑙ｆ瀽鏈嶅姟鍣ㄥ搷搴旂殑鍐呭
      *
      * @param responseBody {@link ResponseBody}
-     * @param encoding     编码类型
-     * @param clone        克隆后的服务器响应内容
-     * @return 解析后的响应结果
+     * @param encoding     缂栫爜绫诲瀷
+     * @param clone        鍏嬮殕鍚庣殑鏈嶅姟鍣ㄥ搷搴斿唴瀹?     * @return 瑙ｆ瀽鍚庣殑鍝嶅簲缁撴灉
      */
     private String parseContent(ResponseBody responseBody, String encoding, Buffer clone) {
         Charset charset = Charset.forName("UTF-8");
@@ -163,20 +157,19 @@ public class RequestInterceptor implements Interceptor {
         if (contentType != null) {
             charset = contentType.charset(charset);
         }
-        if (encoding != null && encoding.equalsIgnoreCase("gzip")) {//content 使用 gzip 压缩
-            return ZipHelper.decompressForGzip(clone.readByteArray(), convertCharset(charset));//解压
-        } else if (encoding != null && encoding.equalsIgnoreCase("zlib")) {//content 使用 zlib 压缩
-            return ZipHelper.decompressToStringForZlib(clone.readByteArray(), convertCharset(charset));//解压
-        } else {//content 没有被压缩, 或者使用其他未知压缩方式
-            return clone.readString(charset);
+        if (encoding != null && encoding.equalsIgnoreCase("gzip")) {//content 浣跨敤 gzip 鍘嬬缉
+            return ZipHelper.decompressForGzip(clone.readByteArray(), convertCharset(charset));//瑙ｅ帇
+        } else if (encoding != null && encoding.equalsIgnoreCase("zlib")) {//content 浣跨敤 zlib 鍘嬬缉
+            return ZipHelper.decompressToStringForZlib(clone.readByteArray(), convertCharset(charset));//瑙ｅ帇
+        } else {//content 娌℃湁琚帇缂? 鎴栬€呬娇鐢ㄥ叾浠栨湭鐭ュ帇缂╂柟寮?            return clone.readString(charset);
         }
     }
 
     /**
-     * 解析请求服务器的请求参数
+     * 瑙ｆ瀽璇锋眰鏈嶅姟鍣ㄧ殑璇锋眰鍙傛暟
      *
      * @param request {@link Request}
-     * @return 解析后的请求信息
+     * @return 瑙ｆ瀽鍚庣殑璇锋眰淇℃伅
      */
     public static String parseParams(Request request) {
         try {
@@ -201,11 +194,10 @@ public class RequestInterceptor implements Interceptor {
     }
 
     /**
-     * 是否可以解析
+     * 鏄惁鍙互瑙ｆ瀽
      *
      * @param mediaType {@link MediaType}
-     * @return {@code true} 为可以解析
-     */
+     * @return {@code true} 涓哄彲浠ヨВ鏋?     */
     public static boolean isParseable(MediaType mediaType) {
         if (mediaType == null || mediaType.type() == null) return false;
         return isText(mediaType) || isPlain(mediaType)
@@ -251,3 +243,4 @@ public class RequestInterceptor implements Interceptor {
         return s.substring(i + 1, s.length() - 1);
     }
 }
+

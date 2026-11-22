@@ -1,7 +1,7 @@
-package com.from.view.refresh.util;
+﻿package com.from.view.refresh.util;
 
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
+import com.google.android.material.appbar.AppBarLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -9,15 +9,13 @@ import com.from.view.refresh.api.RefreshKernel;
 import com.from.view.refresh.listener.CoordinatorLayoutListener;
 
 /**
- * Design 兼容包缺省尝试
- * Created by SCWANG on 2018/1/29.
+ * Design 鍏煎鍖呯己鐪佸皾璇? * Created by SCWANG on 2018/1/29.
  */
 
 public class DesignUtil {
 
     public static void checkCoordinatorLayout(View content, RefreshKernel kernel, CoordinatorLayoutListener listener) {
-        try {//try 不能删除，不然会出现兼容性问题
-            if (content instanceof CoordinatorLayout) {
+        try {//try 涓嶈兘鍒犻櫎锛屼笉鐒朵細鍑虹幇鍏煎鎬ч棶棰?            if (content instanceof CoordinatorLayout) {
                 kernel.getRefreshLayout().setEnableNestedScroll(false);
                 wrapperCoordinatorLayout(((ViewGroup) content)/*, kernel.getRefreshLayout()*/,listener);
             }
@@ -43,3 +41,4 @@ public class DesignUtil {
     }
 
 }
+

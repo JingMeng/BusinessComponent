@@ -1,9 +1,9 @@
-package com.from.view.refresh.internal;
+﻿package com.from.view.refresh.internal;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +24,8 @@ import com.from.view.refresh.listener.OnStateChangedListener;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 /**
- * Internal 初步实现
- * 实现 Header 和 Footer 时，继承 InternalAbstract 的话可以少写很多接口方法
+ * Internal 鍒濇瀹炵幇
+ * 瀹炵幇 Header 鍜?Footer 鏃讹紝缁ф壙 InternalAbstract 鐨勮瘽鍙互灏戝啓寰堝鎺ュ彛鏂规硶
  * Created by SCWANG on 2018/2/6.
  */
 
@@ -191,3 +191,4 @@ public abstract class InternalAbstract extends RelativeLayout implements Refresh
         }
     }
 }
+

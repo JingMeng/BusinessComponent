@@ -1,42 +1,36 @@
-package com.from.view.picture;
+﻿package com.from.view.picture;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.from.view.picture.imageloader.GlideImageLoader;
 import com.from.view.picture.imageloader.UIImageLoader;
 import com.from.view.picture.ui.SelectImageActivity;
 
 /**
- * Doc  对选中的属性进行包装
- *
+ * Doc  瀵归€変腑鐨勫睘鎬ц繘琛屽寘瑁? *
  * @author ym.li
  * @version 2.9.0
  * @since 2018/11/2/002
  */
 public final class SelectorSpec {
     private static final int CROP_SIZE = 200;
-    //剪裁X轴比例
-    private int mAspectX;
-    //剪裁Y轴比例
-    private int mAspectY;
-    //剪裁X大小
+    //鍓X杞存瘮渚?    private int mAspectX;
+    //鍓Y杞存瘮渚?    private int mAspectY;
+    //鍓X澶у皬
     private int mOutputX;
-    //剪裁Ya大小
+    //鍓Ya澶у皬
     private int mOutputY;
-    //最多选中图片数量
+    //鏈€澶氶€変腑鍥剧墖鏁伴噺
     private int mMaxSelectImage;
-    //图片一行展示几张
-    private int mSpanCount;
-    //默认图片加载方式
+    //鍥剧墖涓€琛屽睍绀哄嚑寮?    private int mSpanCount;
+    //榛樿鍥剧墖鍔犺浇鏂瑰紡
     private boolean mIsOpenCamera;
     private UIImageLoader mImageLoader;
-    //是否开启剪裁
-    private boolean mNeedCrop;
+    //鏄惁寮€鍚壀瑁?    private boolean mNeedCrop;
     /**
-     * 选择最大
-     */
+     * 閫夋嫨鏈€澶?     */
     private long mMaxLength;
     private PictureSelector mPictureSelector;
 
@@ -183,3 +177,4 @@ public final class SelectorSpec {
         private static final SelectorSpec INSTANCE = new SelectorSpec();
     }
 }
+

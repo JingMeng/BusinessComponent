@@ -1,9 +1,9 @@
-package com.from.view.picture;
+﻿package com.from.view.picture;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.from.view.picture.ui.SelectImageActivity;
 
@@ -11,8 +11,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 /**
- * Doc  图片选择器入口
- *
+ * Doc  鍥剧墖閫夋嫨鍣ㄥ叆鍙? *
  * @author ym.li
  * @version 2.9.0
  * @since 2018/11/2/002
@@ -60,3 +59,4 @@ public class PictureSelector {
         return mFragment != null ? mFragment.get() : null;
     }
 }
+

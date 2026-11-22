@@ -1,12 +1,12 @@
-package com.from.view.refresh.impl;
+﻿package com.from.view.refresh.impl;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.NestedScrollingParent;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.support.v4.widget.Space;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -34,7 +34,7 @@ import static com.from.view.refresh.util.SmartUtil.measureViewHeight;
 import static com.from.view.refresh.util.SmartUtil.scrollListBy;
 
 /**
- * 刷新内容包装
+ * 鍒锋柊鍐呭鍖呰
  * Created by SCWANG on 2017/5/26.
  */
 @SuppressWarnings("WeakerAccess")
@@ -42,9 +42,8 @@ public class RefreshContentWrapper implements RefreshContent, CoordinatorLayoutL
 
 //    protected int mHeaderHeight = Integer.MAX_VALUE;
 //    protected int mFooterHeight = mHeaderHeight - 1;
-    protected View mContentView;//直接内容视图
-    protected View mOriginalContentView;//被包裹的原真实视图
-    protected View mScrollableView;
+    protected View mContentView;//鐩存帴鍐呭瑙嗗浘
+    protected View mOriginalContentView;//琚寘瑁圭殑鍘熺湡瀹炶鍥?    protected View mScrollableView;
     protected View mFixedHeader;
     protected View mFixedFooter;
     protected int mLastSpinner = 0;
@@ -190,12 +189,11 @@ public class RefreshContentWrapper implements RefreshContent, CoordinatorLayoutL
         PointF point = new PointF(e.getX(), e.getY());
         point.offset(-mContentView.getLeft(), -mContentView.getTop());
         if (mScrollableView != mContentView) {
-            //如果内容视图不是 ScrollableView 说明使用了Layout嵌套内容，需要动态搜索 ScrollableView
+            //濡傛灉鍐呭瑙嗗浘涓嶆槸 ScrollableView 璇存槑浣跨敤浜哃ayout宓屽鍐呭锛岄渶瑕佸姩鎬佹悳绱?ScrollableView
             mScrollableView = findScrollableViewByPoint(mContentView, point, mScrollableView);
         }
         if (mScrollableView == mContentView) {
-            //如果内容视图就是 ScrollableView 就不需要使用事件来动态搜索 而浪费CPU时间和性能了
-//            mBoundaryAdapter.setActionEvent(null);
+            //濡傛灉鍐呭瑙嗗浘灏辨槸 ScrollableView 灏变笉闇€瑕佷娇鐢ㄤ簨浠舵潵鍔ㄦ€佹悳绱?鑰屾氮璐笴PU鏃堕棿鍜屾€ц兘浜?//            mBoundaryAdapter.setActionEvent(null);
             mBoundaryAdapter.mActionEvent = null;
         } else {
             mBoundaryAdapter.mActionEvent = point;
@@ -288,10 +286,11 @@ public class RefreshContentWrapper implements RefreshContent, CoordinatorLayoutL
                 mScrollableView.scrollBy(0, value - mLastSpinner);
             }
         } catch (Throwable ignored) {
-            //根据用户反馈，此处可能会有BUG
+            //鏍规嵁鐢ㄦ埛鍙嶉锛屾澶勫彲鑳戒細鏈塀UG
         }
         mLastSpinner = value;
     }
     //</editor-fold>
 
 }
+

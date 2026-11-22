@@ -1,7 +1,7 @@
-package com.from.business.http.log;
+﻿package com.from.business.http.log;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.module.http.HttpConfigModule;
 
@@ -12,55 +12,49 @@ import okhttp3.Request;
 
 /**
  * ================================================
- * 对 OkHttp 的请求和响应信息进行更规范和清晰的打印, 开发者可更根据自己的需求自行扩展打印格式
- *
+ * 瀵?OkHttp 鐨勮姹傚拰鍝嶅簲淇℃伅杩涜鏇磋鑼冨拰娓呮櫚鐨勬墦鍗? 寮€鍙戣€呭彲鏇存牴鎹嚜宸辩殑闇€姹傝嚜琛屾墿灞曟墦鍗版牸寮? *
  * @see DefaultFormatPrinter
  * @see HttpConfigModule.Builder#formatPrinter(FormatPrinter)
  * ================================================
  */
 public interface FormatPrinter {
     /**
-     * 打印网络请求信息, 当网络请求时 {{@link okhttp3.RequestBody}} 可以解析的情况
-     *
+     * 鎵撳嵃缃戠粶璇锋眰淇℃伅, 褰撶綉缁滆姹傛椂 {{@link okhttp3.RequestBody}} 鍙互瑙ｆ瀽鐨勬儏鍐?     *
      * @param request
-     * @param bodyString 发送给服务器的请求体中的数据(已解析)
+     * @param bodyString 鍙戦€佺粰鏈嶅姟鍣ㄧ殑璇锋眰浣撲腑鐨勬暟鎹?宸茶В鏋?
      */
     void printJsonRequest(@NonNull Request request, @NonNull String bodyString);
 
     /**
-     * 打印网络请求信息, 当网络请求时 {{@link okhttp3.RequestBody}} 为 {@code null} 或不可解析的情况
+     * 鎵撳嵃缃戠粶璇锋眰淇℃伅, 褰撶綉缁滆姹傛椂 {{@link okhttp3.RequestBody}} 涓?{@code null} 鎴栦笉鍙В鏋愮殑鎯呭喌
      *
      * @param request
      */
     void printFileRequest(@NonNull Request request);
 
     /**
-     * 打印网络响应信息, 当网络响应时 {{@link okhttp3.ResponseBody}} 可以解析的情况
-     *
-     * @param chainMs      服务器响应耗时(单位毫秒)
-     * @param isSuccessful 请求是否成功
-     * @param code         响应码
-     * @param headers      请求头
-     * @param contentType  服务器返回数据的数据类型
-     * @param bodyString   服务器返回的数据(已解析)
-     * @param segments     域名后面的资源地址
-     * @param message      响应信息
-     * @param responseUrl  请求地址
+     * 鎵撳嵃缃戠粶鍝嶅簲淇℃伅, 褰撶綉缁滃搷搴旀椂 {{@link okhttp3.ResponseBody}} 鍙互瑙ｆ瀽鐨勬儏鍐?     *
+     * @param chainMs      鏈嶅姟鍣ㄥ搷搴旇€楁椂(鍗曚綅姣)
+     * @param isSuccessful 璇锋眰鏄惁鎴愬姛
+     * @param code         鍝嶅簲鐮?     * @param headers      璇锋眰澶?     * @param contentType  鏈嶅姟鍣ㄨ繑鍥炴暟鎹殑鏁版嵁绫诲瀷
+     * @param bodyString   鏈嶅姟鍣ㄨ繑鍥炵殑鏁版嵁(宸茶В鏋?
+     * @param segments     鍩熷悕鍚庨潰鐨勮祫婧愬湴鍧€
+     * @param message      鍝嶅簲淇℃伅
+     * @param responseUrl  璇锋眰鍦板潃
      */
     void printJsonResponse(long chainMs, boolean isSuccessful, int code, @NonNull String headers, @Nullable MediaType contentType,
         @Nullable String bodyString, @NonNull List<String> segments, @NonNull String message, @NonNull String responseUrl);
 
     /**
-     * 打印网络响应信息, 当网络响应时 {{@link okhttp3.ResponseBody}} 为 {@code null} 或不可解析的情况
+     * 鎵撳嵃缃戠粶鍝嶅簲淇℃伅, 褰撶綉缁滃搷搴旀椂 {{@link okhttp3.ResponseBody}} 涓?{@code null} 鎴栦笉鍙В鏋愮殑鎯呭喌
      *
-     * @param chainMs      服务器响应耗时(单位毫秒)
-     * @param isSuccessful 请求是否成功
-     * @param code         响应码
-     * @param headers      请求头
-     * @param segments     域名后面的资源地址
-     * @param message      响应信息
-     * @param responseUrl  请求地址
+     * @param chainMs      鏈嶅姟鍣ㄥ搷搴旇€楁椂(鍗曚綅姣)
+     * @param isSuccessful 璇锋眰鏄惁鎴愬姛
+     * @param code         鍝嶅簲鐮?     * @param headers      璇锋眰澶?     * @param segments     鍩熷悕鍚庨潰鐨勮祫婧愬湴鍧€
+     * @param message      鍝嶅簲淇℃伅
+     * @param responseUrl  璇锋眰鍦板潃
      */
     void printFileResponse(long chainMs, boolean isSuccessful, int code, @NonNull String headers,
         @NonNull List<String> segments, @NonNull String message, @NonNull String responseUrl);
 }
+

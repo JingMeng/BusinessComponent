@@ -1,7 +1,7 @@
-package com.from.business.http.cache;
+﻿package com.from.business.http.cache;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.utils.Preconditions;
 
@@ -11,20 +11,17 @@ import java.util.Set;
 
 /**
  * ================================================
- * {@link IntelligentCache} 含有可将数据永久存储至内存中的存储容器 {@link #mMap}, 和当达到最大容量时可根据 LRU
- * 算法抛弃不合规数据的存储容器 {@link #mCache}
+ * {@link IntelligentCache} 鍚湁鍙皢鏁版嵁姘镐箙瀛樺偍鑷冲唴瀛樹腑鐨勫瓨鍌ㄥ鍣?{@link #mMap}, 鍜屽綋杈惧埌鏈€澶у閲忔椂鍙牴鎹?LRU
+ * 绠楁硶鎶涘純涓嶅悎瑙勬暟鎹殑瀛樺偍瀹瑰櫒 {@link #mCache}
  * <p>
- * {@link IntelligentCache} 可根据您传入的 {@code key} 智能的判断您需要将数据存储至哪个存储容器, 从而针对数据
- * 的不同特性进行不同的存储优化
+ * {@link IntelligentCache} 鍙牴鎹偍浼犲叆鐨?{@code key} 鏅鸿兘鐨勫垽鏂偍闇€瑕佸皢鏁版嵁瀛樺偍鑷冲摢涓瓨鍌ㄥ鍣? 浠庤€岄拡瀵规暟鎹? * 鐨勪笉鍚岀壒鎬ц繘琛屼笉鍚岀殑瀛樺偍浼樺寲
  * <p>
- * 调用 {@link IntelligentCache#put(Object, Object)} 方法, 使用 {@link #KEY_KEEP} + {@code key} 作为 key 传入的
- * {@code value} 可存储至 {@link #mMap} (数据永久存储至内存中, 适合比较重要的数据) 中, 否则储存至 {@link #mCache}
+ * 璋冪敤 {@link IntelligentCache#put(Object, Object)} 鏂规硶, 浣跨敤 {@link #KEY_KEEP} + {@code key} 浣滀负 key 浼犲叆鐨? * {@code value} 鍙瓨鍌ㄨ嚦 {@link #mMap} (鏁版嵁姘镐箙瀛樺偍鑷冲唴瀛樹腑, 閫傚悎姣旇緝閲嶈鐨勬暟鎹? 涓? 鍚﹀垯鍌ㄥ瓨鑷?{@link #mCache}
  * <p>
  * ================================================
  */
 public class IntelligentCache<V> implements Cache<String, V> {
-    private final Map<String, V> mMap;//可将数据永久存储至内存中的存储容器
-    private final Cache<String, V> mCache;//当达到最大容量时可根据 LRU 算法抛弃不合规数据的存储容器
+    private final Map<String, V> mMap;//鍙皢鏁版嵁姘镐箙瀛樺偍鑷冲唴瀛樹腑鐨勫瓨鍌ㄥ鍣?    private final Cache<String, V> mCache;//褰撹揪鍒版渶澶у閲忔椂鍙牴鎹?LRU 绠楁硶鎶涘純涓嶅悎瑙勬暟鎹殑瀛樺偍瀹瑰櫒
     public static final String KEY_KEEP = "Keep=";
 
     public IntelligentCache(int size) {
@@ -33,9 +30,8 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 将 {@link #mMap} 和 {@link #mCache} 的 {@code size} 相加后返回
-     *
-     * @return 相加后的 {@code size}
+     * 灏?{@link #mMap} 鍜?{@link #mCache} 鐨?{@code size} 鐩稿姞鍚庤繑鍥?     *
+     * @return 鐩稿姞鍚庣殑 {@code size}
      */
     @Override
     public synchronized int size() {
@@ -43,9 +39,8 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 将 {@link #mMap} 和 {@link #mCache} 的 {@code maxSize} 相加后返回
-     *
-     * @return 相加后的 {@code maxSize}
+     * 灏?{@link #mMap} 鍜?{@link #mCache} 鐨?{@code maxSize} 鐩稿姞鍚庤繑鍥?     *
+     * @return 鐩稿姞鍚庣殑 {@code maxSize}
      */
     @Override
     public synchronized int getMaxSize() {
@@ -53,7 +48,7 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 如果在 {@code key} 中使用 {@link #KEY_KEEP} 作为其前缀, 则操作 {@link #mMap}, 否则操作 {@link #mCache}
+     * 濡傛灉鍦?{@code key} 涓娇鐢?{@link #KEY_KEEP} 浣滀负鍏跺墠缂€, 鍒欐搷浣?{@link #mMap}, 鍚﹀垯鎿嶄綔 {@link #mCache}
      *
      * @param key {@code key}
      * @return {@code value}
@@ -68,11 +63,11 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 如果在 {@code key} 中使用 {@link #KEY_KEEP} 作为其前缀, 则操作 {@link #mMap}, 否则操作 {@link #mCache}
+     * 濡傛灉鍦?{@code key} 涓娇鐢?{@link #KEY_KEEP} 浣滀负鍏跺墠缂€, 鍒欐搷浣?{@link #mMap}, 鍚﹀垯鎿嶄綔 {@link #mCache}
      *
      * @param key   {@code key}
      * @param value {@code value}
-     * @return 如果这个 {@code key} 在容器中已经储存有 {@code value}, 则返回之前的 {@code value} 否则返回 {@code null}
+     * @return 濡傛灉杩欎釜 {@code key} 鍦ㄥ鍣ㄤ腑宸茬粡鍌ㄥ瓨鏈?{@code value}, 鍒欒繑鍥炰箣鍓嶇殑 {@code value} 鍚﹀垯杩斿洖 {@code null}
      */
     @Nullable
     @Override
@@ -84,10 +79,10 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 如果在 {@code key} 中使用 {@link #KEY_KEEP} 作为其前缀, 则操作 {@link #mMap}, 否则操作 {@link #mCache}
+     * 濡傛灉鍦?{@code key} 涓娇鐢?{@link #KEY_KEEP} 浣滀负鍏跺墠缂€, 鍒欐搷浣?{@link #mMap}, 鍚﹀垯鎿嶄綔 {@link #mCache}
      *
      * @param key {@code key}
-     * @return 如果这个 {@code key} 在容器中已经储存有 {@code value} 并且删除成功则返回删除的 {@code value}, 否则返回 {@code null}
+     * @return 濡傛灉杩欎釜 {@code key} 鍦ㄥ鍣ㄤ腑宸茬粡鍌ㄥ瓨鏈?{@code value} 骞朵笖鍒犻櫎鎴愬姛鍒欒繑鍥炲垹闄ょ殑 {@code value}, 鍚﹀垯杩斿洖 {@code null}
      */
     @Nullable
     @Override
@@ -99,10 +94,10 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 如果在 {@code key} 中使用 {@link #KEY_KEEP} 作为其前缀, 则操作 {@link #mMap}, 否则操作 {@link #mCache}
+     * 濡傛灉鍦?{@code key} 涓娇鐢?{@link #KEY_KEEP} 浣滀负鍏跺墠缂€, 鍒欐搷浣?{@link #mMap}, 鍚﹀垯鎿嶄綔 {@link #mCache}
      *
      * @param key {@code key}
-     * @return {@code true} 为在容器中含有这个 {@code key}, 否则为 {@code false}
+     * @return {@code true} 涓哄湪瀹瑰櫒涓惈鏈夎繖涓?{@code key}, 鍚﹀垯涓?{@code false}
      */
     @Override
     public synchronized boolean containsKey(String key) {
@@ -113,9 +108,9 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 将 {@link #mMap} 和 {@link #mCache} 的 {@code keySet} 合并返回
+     * 灏?{@link #mMap} 鍜?{@link #mCache} 鐨?{@code keySet} 鍚堝苟杩斿洖
      *
-     * @return 合并后的 {@code keySet}
+     * @return 鍚堝苟鍚庣殑 {@code keySet}
      */
     @Override
     public synchronized Set<String> keySet() {
@@ -125,7 +120,7 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 清空 {@link #mMap} 和 {@link #mCache} 容器
+     * 娓呯┖ {@link #mMap} 鍜?{@link #mCache} 瀹瑰櫒
      */
     @Override
     public void clear() {
@@ -134,8 +129,7 @@ public class IntelligentCache<V> implements Cache<String, V> {
     }
 
     /**
-     * 使用此方法返回的值作为 key, 可以将数据永久存储至内存中
-     *
+     * 浣跨敤姝ゆ柟娉曡繑鍥炵殑鍊间綔涓?key, 鍙互灏嗘暟鎹案涔呭瓨鍌ㄨ嚦鍐呭瓨涓?     *
      * @param key {@code key}
      * @return Keep= + {@code key}
      */
@@ -145,3 +139,4 @@ public class IntelligentCache<V> implements Cache<String, V> {
         return IntelligentCache.KEY_KEEP + key;
     }
 }
+

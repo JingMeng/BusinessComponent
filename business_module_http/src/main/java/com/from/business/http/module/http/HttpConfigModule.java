@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2017 JessYan
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 package com.from.business.http.module.http;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.from.business.http.BaseUrl;
@@ -51,8 +51,7 @@ import static com.from.business.http.utils.Preconditions.checkNotNull;
 
 /**
  * ================================================
- * 框架独创的建造者模式 {@link },可向框架中注入外部配置的自定义参数
- * <p>
+ * 妗嗘灦鐙垱鐨勫缓閫犺€呮ā寮?{@link },鍙悜妗嗘灦涓敞鍏ュ閮ㄩ厤缃殑鑷畾涔夊弬鏁? * <p>
  * ================================================
  */
 public class HttpConfigModule {
@@ -98,7 +97,7 @@ public class HttpConfigModule {
     }
 
     /**
-     * 提供 BaseUrl,默认使用 <"https://api.github.com/">
+     * 鎻愪緵 BaseUrl,榛樿浣跨敤 <"https://api.github.com/">
      *
      * @return
      */
@@ -113,8 +112,7 @@ public class HttpConfigModule {
     }
 
     /**
-     * 提供处理 Http 请求和响应结果的处理类
-     *
+     * 鎻愪緵澶勭悊 Http 璇锋眰鍜屽搷搴旂粨鏋滅殑澶勭悊绫?     *
      * @return
      */
     @Nullable
@@ -123,15 +121,14 @@ public class HttpConfigModule {
     }
 
     /**
-     * 提供缓存文件
+     * 鎻愪緵缂撳瓨鏂囦欢
      */
     File provideCacheFile(Application application) {
         return mCacheFile == null ? DataHelper.getCacheFile(application) : mCacheFile;
     }
 
     /**
-     * 提供处理 RxJava 错误的管理器的回调
-     *
+     * 鎻愪緵澶勭悊 RxJava 閿欒鐨勭鐞嗗櫒鐨勫洖璋?     *
      * @return
      */
     ResponseErrorListener provideResponseErrorListener() {
@@ -171,15 +168,14 @@ public class HttpConfigModule {
             @NonNull
             @Override
             public Cache build(CacheType type) {
-                //若想自定义 LruCache 的 size, 或者不想使用 LruCache, 想使用自己自定义的策略
-                //使用 GlobalConfigModule.Builder#cacheFactory() 即可扩展
+                //鑻ユ兂鑷畾涔?LruCache 鐨?size, 鎴栬€呬笉鎯充娇鐢?LruCache, 鎯充娇鐢ㄨ嚜宸辫嚜瀹氫箟鐨勭瓥鐣?                //浣跨敤 GlobalConfigModule.Builder#cacheFactory() 鍗冲彲鎵╁睍
                 switch (type.getCacheTypeId()) {
-                    //Activity、Fragment 以及 Extras 使用 IntelligentCache (具有 LruCache 和 可永久存储数据的 Map)
+                    //Activity銆丗ragment 浠ュ強 Extras 浣跨敤 IntelligentCache (鍏锋湁 LruCache 鍜?鍙案涔呭瓨鍌ㄦ暟鎹殑 Map)
                     case CacheType.EXTRAS_TYPE_ID:
                     case CacheType.ACTIVITY_CACHE_TYPE_ID:
                     case CacheType.FRAGMENT_CACHE_TYPE_ID:
                         return new IntelligentCache(type.calculateCacheSize(application));
-                    //其余使用 LruCache (当达到最大容量时可根据 LRU 算法抛弃不合规数据)
+                    //鍏朵綑浣跨敤 LruCache (褰撹揪鍒版渶澶у閲忔椂鍙牴鎹?LRU 绠楁硶鎶涘純涓嶅悎瑙勬暟鎹?
                     default:
                         return new LruCache(type.calculateCacheSize(application));
                 }
@@ -188,9 +184,7 @@ public class HttpConfigModule {
     }
 
     /**
-     * 返回一个全局公用的线程池,适用于大多数异步需求。
-     * 避免多个线程池创建带来的资源消耗。
-     *
+     * 杩斿洖涓€涓叏灞€鍏敤鐨勭嚎绋嬫睜,閫傜敤浜庡ぇ澶氭暟寮傛闇€姹傘€?     * 閬垮厤澶氫釜绾跨▼姹犲垱寤哄甫鏉ョ殑璧勬簮娑堣€椼€?     *
      * @return {@link Executor}
      */
     ExecutorService provideExecutorService() {
@@ -217,7 +211,7 @@ public class HttpConfigModule {
         private Builder() {
         }
 
-        public Builder baseurl(String baseUrl) {//基础url
+        public Builder baseurl(String baseUrl) {//鍩虹url
             if (TextUtils.isEmpty(baseUrl)) {
                 throw new NullPointerException("BaseUrl can not be empty");
             }
@@ -230,19 +224,19 @@ public class HttpConfigModule {
             return this;
         }
 
-        public Builder globalHttpHandler(HttpHandler handler) {//用来处理http响应结果
+        public Builder globalHttpHandler(HttpHandler handler) {//鐢ㄦ潵澶勭悊http鍝嶅簲缁撴灉
             this.handler = handler;
             return this;
         }
 
-        public Builder addInterceptor(Interceptor interceptor) {//动态添加任意个interceptor
+        public Builder addInterceptor(Interceptor interceptor) {//鍔ㄦ€佹坊鍔犱换鎰忎釜interceptor
             if (interceptors == null)
                 interceptors = new ArrayList<>();
             this.interceptors.add(interceptor);
             return this;
         }
 
-        public Builder responseErrorListener(ResponseErrorListener listener) {//处理所有RxJava的onError逻辑
+        public Builder responseErrorListener(ResponseErrorListener listener) {//澶勭悊鎵€鏈塕xJava鐨刼nError閫昏緫
             this.responseErrorListener = listener;
             return this;
         }
@@ -272,7 +266,7 @@ public class HttpConfigModule {
             return this;
         }
 
-        public Builder printHttpLogLevel(RequestInterceptor.Level printHttpLogLevel) {//是否让框架打印 Http 的请求和响应信息
+        public Builder printHttpLogLevel(RequestInterceptor.Level printHttpLogLevel) {//鏄惁璁╂鏋舵墦鍗?Http 鐨勮姹傚拰鍝嶅簲淇℃伅
             this.printHttpLogLevel = checkNotNull(printHttpLogLevel, "The printHttpLogLevel can not be null, use RequestInterceptor.Level.NONE instead.");
             return this;
         }
@@ -297,3 +291,4 @@ public class HttpConfigModule {
         }
     }
 }
+

@@ -1,9 +1,9 @@
-package me.businesscomponent.activity;
+﻿package me.businesscomponent.activity;
 
 import android.arch.lifecycle.Lifecycle;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.from.business.http.retrofiturlmanager.RetrofitUrlManager;
 import com.uber.autodispose.AutoDisposeConverter;
@@ -51,3 +51,4 @@ public class HttpExampleActivity extends AppCompatActivity {
         pm.stop();
     }
 }
+

@@ -1,4 +1,4 @@
-package com.from.view.refresh.internal;
+﻿package com.from.view.refresh.internal;
 
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;
@@ -6,11 +6,11 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.animation.LinearInterpolator;
 
 /**
- * 旋转动画
+ * 鏃嬭浆鍔ㄧ敾
  * Created by SCWANG on 2017/6/16.
  */
 @SuppressWarnings("WeakerAccess")
@@ -91,3 +91,4 @@ public class ProgressDrawable extends PaintDrawable implements Animatable , Valu
     }
 
 }
+

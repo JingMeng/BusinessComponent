@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace = ['view_module_photoview': 'com.from.view.photoview',
+               'view_module_picture': 'com.from.view.picture',
+               'view_module_swipeback': 'com.from.view.swipeback',
+               'view_module_refresh': 'com.from.view.refresh',
+               'business_module_http': 'com.from.business.http'][project.name]
     compileSdkVersion COMPILE_SDK_VERSION.toInteger()
 
 //    compileOptions {
@@ -9,18 +14,20 @@ android {
 //    }
 
     defaultConfig {
-        minSdkVersion MIN_SDK_VERSION
-        targetSdkVersion TARGET_SDK_VERSION
+        minSdkVersion MIN_SDK_VERSION.toInteger()
+        targetSdkVersion TARGET_SDK_VERSION.toInteger()
         versionCode APP_CODE.toInteger()
         versionName APP_NAME
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
     buildTypes {
-        buildTypes {
             release {
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
-        }
     }
 
     lintOptions {
@@ -30,5 +37,5 @@ android {
 }
 
 dependencies {
-    compileOnly "com.android.support:appcompat-v7:$support_version"
+    compileOnly 'androidx.appcompat:appcompat:1.6.1'
 }

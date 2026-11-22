@@ -1,8 +1,8 @@
-package com.from.view.picture.adapter;
+﻿package com.from.view.picture.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 图片预览ViewPager
+ * 鍥剧墖棰勮ViewPager
  * <p>
  * author: ym.li
  * since: 2018/11/3
@@ -80,3 +80,4 @@ public class PreviewAdapter extends PagerAdapter {
         return view.equals(o);
     }
 }
+

@@ -1,11 +1,11 @@
-
+﻿
 package com.from.view.swipeback;
 
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.SurfaceView;
 import android.view.View;
 import android.webkit.WebView;
@@ -56,7 +56,7 @@ final class SwipeBackManager implements Application.ActivityLifecycleCallbacks {
     @Override
     public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
         SwipeBackUtil.d("SwipeBackManager observe Activity onCreate");
-        SwipeBackUtil.d("Activity info : package" + activity.getPackageName() + "___SimpleName：" + activity.getClass().getSimpleName());
+        SwipeBackUtil.d("Activity info : package" + activity.getPackageName() + "___SimpleName锛? + activity.getClass().getSimpleName());
 
         mActivityStack.add(activity);
         if (mOptions != null) {
@@ -111,7 +111,7 @@ final class SwipeBackManager implements Application.ActivityLifecycleCallbacks {
     }
 
     /**
-     * 获取倒数第二个 Activity
+     * 鑾峰彇鍊掓暟绗簩涓?Activity
      *
      * @return
      */
@@ -125,11 +125,9 @@ final class SwipeBackManager implements Application.ActivityLifecycleCallbacks {
                 if (currentActivity.equals(activity)) {
                     int index = mActivityStack.indexOf(currentActivity);
                     if (index > 0) {
-                        // 处理内存泄漏或最后一个 Activity 正在 finishing 的情况
-                        activity = mActivityStack.get(index - 1);
+                        // 澶勭悊鍐呭瓨娉勬紡鎴栨渶鍚庝竴涓?Activity 姝ｅ湪 finishing 鐨勬儏鍐?                        activity = mActivityStack.get(index - 1);
                     } else if (mActivityStack.size() == 2) {
-                        // 处理屏幕旋转后 mActivityStack 中顺序错乱
-                        activity = mActivityStack.lastElement();
+                        // 澶勭悊灞忓箷鏃嬭浆鍚?mActivityStack 涓『搴忛敊涔?                        activity = mActivityStack.lastElement();
                     }
                 }
             }
@@ -139,7 +137,7 @@ final class SwipeBackManager implements Application.ActivityLifecycleCallbacks {
     }
 
     /**
-     * 滑动返回是否可用
+     * 婊戝姩杩斿洖鏄惁鍙敤
      *
      * @return
      */
@@ -148,8 +146,7 @@ final class SwipeBackManager implements Application.ActivityLifecycleCallbacks {
     }
 
     /**
-     * 某个 view 是否会导致滑动返回后立即触摸界面时应用崩溃
-     *
+     * 鏌愪釜 view 鏄惁浼氬鑷存粦鍔ㄨ繑鍥炲悗绔嬪嵆瑙︽懜鐣岄潰鏃跺簲鐢ㄥ穿婧?     *
      * @param view
      * @return
      */

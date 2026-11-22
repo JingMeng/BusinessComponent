@@ -1,10 +1,10 @@
-package com.from.view.swipeback;
+﻿package com.from.view.swipeback;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.annotation.DrawableRes;
-import android.support.v4.view.ViewCompat;
+import androidx.annotation.DrawableRes;
+import androidx.core.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -18,7 +18,7 @@ import static com.from.view.swipeback.SwipeBackUtil.getNavigationBarHeight;
 import static com.from.view.swipeback.SwipeBackUtil.getRealScreenHeight;
 
 /**
- * 左侧阴影控件
+ * 宸︿晶闃村奖鎺т欢
  *
  * @author Vea
  * @version 0.0.9
@@ -34,20 +34,18 @@ class SwipeBackShadowView extends FrameLayout {
     private ImageView mPreImageView;
     private View mShadowView;
     /**
-     * 是否显示滑动返回的阴影效果
-     */
+     * 鏄惁鏄剧ず婊戝姩杩斿洖鐨勯槾褰辨晥鏋?     */
     private boolean mIsNeedShowShadow = true;
     /**
-     * 阴影资源 id
+     * 闃村奖璧勬簮 id
      */
     private int mShadowResId = R.drawable.maven_swipeback_shadow;
     /**
-     * 阴影区域的透明度是否根据滑动的距离渐变
+     * 闃村奖鍖哄煙鐨勯€忔槑搴︽槸鍚︽牴鎹粦鍔ㄧ殑璺濈娓愬彉
      */
     private boolean mIsShadowAlphaGradient = true;
     /**
-     * 是否是微信滑动返回样式
-     */
+     * 鏄惁鏄井淇℃粦鍔ㄨ繑鍥炴牱寮?     */
     private boolean mIsWeChatStyle = true;
 
     SwipeBackShadowView(Activity activity) {
@@ -57,7 +55,7 @@ class SwipeBackShadowView extends FrameLayout {
     }
 
     /**
-     * 设置是否显示滑动返回的阴影效果。默认值为 true
+     * 璁剧疆鏄惁鏄剧ず婊戝姩杩斿洖鐨勯槾褰辨晥鏋溿€傞粯璁ゅ€间负 true
      */
     void setIsNeedShowShadow(boolean isNeedShowShadow) {
         mIsNeedShowShadow = isNeedShowShadow;
@@ -65,7 +63,7 @@ class SwipeBackShadowView extends FrameLayout {
     }
 
     /**
-     * 设置阴影资源 id。默认值为 R.drawable.maven_swipeback_shadow
+     * 璁剧疆闃村奖璧勬簮 id銆傞粯璁ゅ€间负 R.drawable.maven_swipeback_shadow
      */
     void setShadowResId(@DrawableRes int shadowResId) {
         mShadowResId = shadowResId;
@@ -73,14 +71,14 @@ class SwipeBackShadowView extends FrameLayout {
     }
 
     /**
-     * 设置阴影区域的透明度是否根据滑动的距离渐变。默认值为 true
+     * 璁剧疆闃村奖鍖哄煙鐨勯€忔槑搴︽槸鍚︽牴鎹粦鍔ㄧ殑璺濈娓愬彉銆傞粯璁ゅ€间负 true
      */
     void setIsShadowAlphaGradient(boolean isShadowAlphaGradient) {
         mIsShadowAlphaGradient = isShadowAlphaGradient;
     }
 
     /**
-     * 设置是否是微信滑动返回样式。默认值为 true
+     * 璁剧疆鏄惁鏄井淇℃粦鍔ㄨ繑鍥炴牱寮忋€傞粯璁ゅ€间负 true
      */
     void setIsWeChatStyle(boolean isWeChatStyle) {
         mIsWeChatStyle = isWeChatStyle;
@@ -171,7 +169,7 @@ class SwipeBackShadowView extends FrameLayout {
         if (mPreImageView != null) {
             return;
         }
-        // add 和 remove 方式时，滑动返回结束后的最后一帧通过 draw 来实现，避免抖动
+        // add 鍜?remove 鏂瑰紡鏃讹紝婊戝姩杩斿洖缁撴潫鍚庣殑鏈€鍚庝竴甯ч€氳繃 draw 鏉ュ疄鐜帮紝閬垮厤鎶栧姩
         if (mPreContentView == null && mPreDecorView != null) {
             mPreDecorView.draw(canvas);
         }
@@ -188,7 +186,7 @@ class SwipeBackShadowView extends FrameLayout {
     }
 
     /**
-     * 该 ViewGroup 中是否包含导致多次 draw 后应用崩溃的 View
+     * 璇?ViewGroup 涓槸鍚﹀寘鍚鑷村娆?draw 鍚庡簲鐢ㄥ穿婧冪殑 View
      */
     private boolean containsProblemView(ViewGroup viewGroup) {
         int childCount = viewGroup.getChildCount();
@@ -214,18 +212,16 @@ class SwipeBackShadowView extends FrameLayout {
 
     void onPanelSlide(float slideOffset) {
         if (mPreContentView == null) return;
-        if (mIsWeChatStyle) { // 微信滑动返回样式的情况
-            ViewCompat.setTranslationX(mPreContentView, (mPreContentView.getMeasuredWidth() * WE_CHAT_STYLE_MAX_OFFSET) * (1 - slideOffset));
-        } else { // 非微信滑动返回样式的情况
+        if (mIsWeChatStyle) { // 寰俊婊戝姩杩斿洖鏍峰紡鐨勬儏鍐?            ViewCompat.setTranslationX(mPreContentView, (mPreContentView.getMeasuredWidth() * WE_CHAT_STYLE_MAX_OFFSET) * (1 - slideOffset));
+        } else { // 闈炲井淇℃粦鍔ㄨ繑鍥炴牱寮忕殑鎯呭喌
             ViewCompat.setTranslationX(mPreContentView, mPreContentView.getMeasuredWidth() * (1 - slideOffset));
         }
     }
 
     void onPanelClosed() {
         if (mPreContentView == null) return;
-        if (mIsWeChatStyle) { // 微信滑动返回样式的情况
-            ViewCompat.setTranslationX(mPreContentView, 0);
-        } else { // 非微信滑动返回样式的情况
+        if (mIsWeChatStyle) { // 寰俊婊戝姩杩斿洖鏍峰紡鐨勬儏鍐?            ViewCompat.setTranslationX(mPreContentView, 0);
+        } else { // 闈炲井淇℃粦鍔ㄨ繑鍥炴牱寮忕殑鎯呭喌
             ViewCompat.setTranslationX(mPreContentView, 0);
         }
         unBindPreActivity(false);
@@ -254,3 +250,4 @@ class SwipeBackShadowView extends FrameLayout {
 //        }
 //    }
 }
+

@@ -1,4 +1,4 @@
-package com.from.view.picture.ui;
+﻿package com.from.view.picture.ui;
 
 import android.Manifest;
 import android.animation.Animator;
@@ -11,15 +11,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -42,7 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Doc  选择图片Activity
+ * Doc  閫夋嫨鍥剧墖Activity
  *
  * @author ym.li
  * @version 2.9.0
@@ -52,7 +52,7 @@ public class SelectImageActivity extends AppCompatActivity implements ImagesAdap
     ImagesAdapter.OnImageSelectListener, View.OnClickListener, FolderAdapter.OnFolderSelectListener,
     SelectImageHelper.OnImageSelectUpdateListener, ImageDataSource.DataCallback, ImagesAdapter.OnTakePhotoListener {
     /**
-     * 返回图片路径
+     * 杩斿洖鍥剧墖璺緞
      */
     public static final String RESULT_IMAGES = "result_images";
     private static final int REQUEST_PREVIEW_IMAGES = 0x002f;
@@ -92,7 +92,7 @@ public class SelectImageActivity extends AppCompatActivity implements ImagesAdap
     }
 
     /**
-     * 修改状态栏颜色
+     * 淇敼鐘舵€佹爮棰滆壊
      */
     private void setStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -110,7 +110,7 @@ public class SelectImageActivity extends AppCompatActivity implements ImagesAdap
         mImageRv.setHasFixedSize(true);
         ((DefaultItemAnimator) mImageRv.getItemAnimator()).setSupportsChangeAnimations(false);
         int spacing = getResources().getDimensionPixelSize(R.dimen.maven_picture_image_grid_spacing);
-        //小于等于0时，设置默认值为3;   解决GridLayoutManager throw  Span count should be at least 1. Provided 0
+        //灏忎簬绛変簬0鏃讹紝璁剧疆榛樿鍊间负3;   瑙ｅ喅GridLayoutManager throw  Span count should be at least 1. Provided 0
         if (mSelectorSpec.getSpanCount() <= 0) {
             mSelectorSpec.setSpanCount(3);
         }
@@ -363,13 +363,12 @@ public class SelectImageActivity extends AppCompatActivity implements ImagesAdap
 
     @Override
     public void OnFolderSelect(int position) {
-        //关闭当前目录弹窗
+        //鍏抽棴褰撳墠鐩綍寮圭獥
         closeFolderRv();
-        //改变选中的目录
-        mFolderAdapter.updateSelectItem(position);
-        //切换不同目录下的图集
+        //鏀瑰彉閫変腑鐨勭洰褰?        mFolderAdapter.updateSelectItem(position);
+        //鍒囨崲涓嶅悓鐩綍涓嬬殑鍥鹃泦
         mImagesAdapter.setNewData(mFolderList.get(position).images);
-        //更换图片目录
+        //鏇存崲鍥剧墖鐩綍
         ImageFolder folder = mFolderAdapter.getItem(position);
         mSelectFolderBtn.setText(folder.name);
     }
@@ -414,3 +413,4 @@ public class SelectImageActivity extends AppCompatActivity implements ImagesAdap
         mSelectImageItem.setOnImageSelectUpdateListener(null);
     }
 }
+

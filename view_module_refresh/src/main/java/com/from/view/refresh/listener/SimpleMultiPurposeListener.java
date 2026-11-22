@@ -1,6 +1,6 @@
-package com.from.view.refresh.listener;
+﻿package com.from.view.refresh.listener;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.from.view.refresh.api.RefreshFooter;
 import com.from.view.refresh.api.RefreshHeader;
@@ -8,7 +8,7 @@ import com.from.view.refresh.api.RefreshLayout;
 import com.from.view.refresh.constant.RefreshState;
 
 /**
- * 多功能监听器
+ * 澶氬姛鑳界洃鍚櫒
  * Created by SCWANG on 2017/5/26.
  */
 
@@ -90,3 +90,4 @@ public class SimpleMultiPurposeListener implements OnMultiPurposeListener {
     }
 
 }
+

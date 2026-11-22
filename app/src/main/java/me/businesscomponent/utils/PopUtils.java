@@ -1,15 +1,14 @@
-package me.businesscomponent.utils;
+﻿package me.businesscomponent.utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.icu.util.VersionInfo;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 
 import me.businesscomponent.view.TipDialog;
 
 /**
- * 弹窗管理类
- *
+ * 寮圭獥绠＄悊绫? *
  * @author : ym.li
  * @version : v2.6.0
  * @since : 2018/9/3/003
@@ -26,22 +25,20 @@ public class PopUtils {
     }
 
     /**
-     * 获取菊花形状Dialog
+     * 鑾峰彇鑿婅姳褰㈢姸Dialog
      *
-     * @param context 上下文
-     * @return 返回TipDialog
+     * @param context 涓婁笅鏂?     * @return 杩斿洖TipDialog
      */
     public static TipDialog getTipDialog(Context context) {
         return getTipDialog(context, true);
     }
 
     /**
-     * 获取带文字提示的菊花形状Dialog
+     * 鑾峰彇甯︽枃瀛楁彁绀虹殑鑿婅姳褰㈢姸Dialog
      *
-     * @param context  上下文
-     * @param word     提示文字
-     * @param iconType icon类型
-     * @return 返回TipDialog
+     * @param context  涓婁笅鏂?     * @param word     鎻愮ず鏂囧瓧
+     * @param iconType icon绫诲瀷
+     * @return 杩斿洖TipDialog
      */
     public static TipDialog getTipDialog(Context context, CharSequence word, @TipDialog.Builder.IconType int iconType) {
         return new TipDialog
@@ -51,3 +48,4 @@ public class PopUtils {
             .create();
     }
 }
+

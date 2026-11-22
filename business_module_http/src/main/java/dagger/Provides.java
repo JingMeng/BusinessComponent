@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2007 The Dagger Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * {@code @Provides} methods that return {@code null} will throw a {@link NullPointerException}
  * immediately thereafter. {@code @Provides} methods may opt into allowing {@code null} by
  * annotating the method with any {@code @Nullable} annotation like
- * {@code javax.annotation.Nullable} or {@code android.support.annotation.Nullable}.
+ * {@code javax.annotation.Nullable} or {@code androidx.annotation.Nullable}.
  *
  * <p>If a {@code @Provides} method is marked {@code @Nullable}, Dagger will <em>only</em>
  * allow injection into sites that are marked {@code @Nullable} as well. A component that
@@ -44,3 +44,4 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented @Target(METHOD) @Retention(RUNTIME)
 public @interface Provides {
 }
+

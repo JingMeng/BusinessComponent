@@ -1,17 +1,17 @@
-package com.from.business.http.cache;
+﻿package com.from.business.http.cache;
 
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.from.business.http.component.HttpComponent;
 import com.from.business.http.integration.RepositoryManager;
 
 /**
  * ================================================
- * 构建 {@link Cache} 时,使用 {@link CacheType} 中声明的类型,来区分不同的模块
- * 从而为不同的模块构建不同的缓存策略
+ * 鏋勫缓 {@link Cache} 鏃?浣跨敤 {@link CacheType} 涓０鏄庣殑绫诲瀷,鏉ュ尯鍒嗕笉鍚岀殑妯″潡
+ * 浠庤€屼负涓嶅悓鐨勬ā鍧楁瀯寤轰笉鍚岀殑缂撳瓨绛栫暐
  *
  * @see Cache.Factory#build(CacheType)
  * ================================================
@@ -23,8 +23,7 @@ public interface CacheType {
     int ACTIVITY_CACHE_TYPE_ID = 3;
     int FRAGMENT_CACHE_TYPE_ID = 4;
     /**
-     * {@link RepositoryManager}中存储 Retrofit Service 的容器
-     */
+     * {@link RepositoryManager}涓瓨鍌?Retrofit Service 鐨勫鍣?     */
     CacheType RETROFIT_SERVICE_CACHE = new CacheType() {
         private static final int MAX_SIZE = 150;
         private static final float MAX_SIZE_MULTIPLIER = 0.002f;
@@ -46,8 +45,7 @@ public interface CacheType {
     };
 
     /**
-     * {@link RepositoryManager} 中储存 Cache Service 的容器
-     */
+     * {@link RepositoryManager} 涓偍瀛?Cache Service 鐨勫鍣?     */
     CacheType CACHE_SERVICE_CACHE = new CacheType() {
         private static final int MAX_SIZE = 150;
         private static final float MAX_SIZE_MULTIPLIER = 0.002f;
@@ -69,7 +67,7 @@ public interface CacheType {
     };
 
     /**
-     * {@link HttpComponent} 中的 extras
+     * {@link HttpComponent} 涓殑 extras
      */
     CacheType EXTRAS = new CacheType() {
         private static final int MAX_SIZE = 500;
@@ -92,7 +90,7 @@ public interface CacheType {
     };
 
     /**
-     * {@link Activity} 中存储数据的容器
+     * {@link Activity} 涓瓨鍌ㄦ暟鎹殑瀹瑰櫒
      */
     CacheType ACTIVITY_CACHE = new CacheType() {
         private static final int MAX_SIZE = 80;
@@ -115,7 +113,7 @@ public interface CacheType {
     };
 
     /**
-     * {@link Fragment} 中存储数据的容器
+     * {@link Fragment} 涓瓨鍌ㄦ暟鎹殑瀹瑰櫒
      */
     CacheType FRAGMENT_CACHE = new CacheType() {
         private static final int MAX_SIZE = 80;
@@ -138,16 +136,17 @@ public interface CacheType {
     };
 
     /**
-     * 返回框架内需要缓存的模块对应的 {@code id}
+     * 杩斿洖妗嗘灦鍐呴渶瑕佺紦瀛樼殑妯″潡瀵瑰簲鐨?{@code id}
      *
      * @return
      */
     int getCacheTypeId();
 
     /**
-     * 计算对应模块需要的缓存大小
+     * 璁＄畻瀵瑰簲妯″潡闇€瑕佺殑缂撳瓨澶у皬
      *
      * @return
      */
     int calculateCacheSize(Context context);
 }
+

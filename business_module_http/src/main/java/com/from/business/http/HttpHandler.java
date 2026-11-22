@@ -1,7 +1,7 @@
-package com.from.business.http;
+﻿package com.from.business.http;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.from.business.http.module.http.HttpConfigModule;
 
@@ -11,17 +11,14 @@ import okhttp3.Response;
 
 /**
  * ================================================
- * 处理 Http 请求和响应结果的处理类
- * 使用 {@link HttpConfigModule.Builder#globalHttpHandler(HttpHandler)} 方法配置
+ * 澶勭悊 Http 璇锋眰鍜屽搷搴旂粨鏋滅殑澶勭悊绫? * 浣跨敤 {@link HttpConfigModule.Builder#globalHttpHandler(HttpHandler)} 鏂规硶閰嶇疆
  * <p>
  * ================================================
  */
 public interface HttpHandler {
     /**
-     * 这里可以先客户端一步拿到每一次 Http 请求的结果, 可以先解析成 Json, 再做一些操作, 如检测到 token 过期后
-     * 重新请求 token, 并重新执行请求
-     *
-     * @param httpResult 服务器返回的结果 (已被框架自动转换为字符串)
+     * 杩欓噷鍙互鍏堝鎴风涓€姝ユ嬁鍒版瘡涓€娆?Http 璇锋眰鐨勭粨鏋? 鍙互鍏堣В鏋愭垚 Json, 鍐嶅仛涓€浜涙搷浣? 濡傛娴嬪埌 token 杩囨湡鍚?     * 閲嶆柊璇锋眰 token, 骞堕噸鏂版墽琛岃姹?     *
+     * @param httpResult 鏈嶅姟鍣ㄨ繑鍥炵殑缁撴灉 (宸茶妗嗘灦鑷姩杞崲涓哄瓧绗︿覆)
      * @param chain      {@link Interceptor.Chain}
      * @param response   {@link Response}
      * @return {@link Response}
@@ -30,8 +27,7 @@ public interface HttpHandler {
     Response onHttpResultResponse(@Nullable String httpResult, @NonNull Interceptor.Chain chain, @NonNull Response response);
 
     /**
-     * 这里可以在请求服务器之前拿到 {@link Request}, 做一些操作比如给 {@link Request} 统一添加 token 或者 header 以及参数加密等操作
-     *
+     * 杩欓噷鍙互鍦ㄨ姹傛湇鍔″櫒涔嬪墠鎷垮埌 {@link Request}, 鍋氫竴浜涙搷浣滄瘮濡傜粰 {@link Request} 缁熶竴娣诲姞 token 鎴栬€?header 浠ュ強鍙傛暟鍔犲瘑绛夋搷浣?     *
      * @param chain   {@link Interceptor.Chain}
      * @param request {@link Request}
      * @return {@link Request}
@@ -40,21 +36,21 @@ public interface HttpHandler {
     Request onHttpRequestBefore(@NonNull Interceptor.Chain chain, @NonNull Request request);
 
     /**
-     * 空实现
-     */
+     * 绌哄疄鐜?     */
     HttpHandler EMPTY = new HttpHandler() {
         @NonNull
         @Override
         public Response onHttpResultResponse(@Nullable String httpResult, @NonNull Interceptor.Chain chain, @NonNull Response response) {
-            //不管是否处理, 都必须将 response 返回出去
+            //涓嶇鏄惁澶勭悊, 閮藉繀椤诲皢 response 杩斿洖鍑哄幓
             return response;
         }
 
         @NonNull
         @Override
         public Request onHttpRequestBefore(@NonNull Interceptor.Chain chain, @NonNull Request request) {
-            //不管是否处理, 都必须将 request 返回出去
+            //涓嶇鏄惁澶勭悊, 閮藉繀椤诲皢 request 杩斿洖鍑哄幓
             return request;
         }
     };
 }
+

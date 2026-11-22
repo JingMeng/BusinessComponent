@@ -1,13 +1,13 @@
-package com.from.view.refresh.api;
+﻿package com.from.view.refresh.api;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
- * 默认Footer创建器
- * Created by SCWANG on 2018/1/26.
+ * 榛樿Footer鍒涘缓鍣? * Created by SCWANG on 2018/1/26.
  */
 public interface DefaultRefreshFooterCreator {
     @NonNull
     RefreshFooter createRefreshFooter(@NonNull Context context, @NonNull RefreshLayout layout);
 }
+

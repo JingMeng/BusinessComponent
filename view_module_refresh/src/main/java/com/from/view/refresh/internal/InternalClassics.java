@@ -1,14 +1,14 @@
-package com.from.view.refresh.internal;
+﻿package com.from.view.refresh.internal;
 
 import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -28,7 +28,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.from.view.refresh.util.SmartUtil.getColor;
 
 /**
- * 经典组件
+ * 缁忓吀缁勪欢
  * Created by SCWANG on 2017/5/28.
  */
 @SuppressWarnings({"unused", "UnusedReturnValue"})
@@ -199,8 +199,7 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
             progressView.animate().rotation(0).setDuration(0);
         }
         progressView.setVisibility(GONE);
-        return mFinishDuration;//延迟500毫秒之后再弹回
-    }
+        return mFinishDuration;//寤惰繜500姣涔嬪悗鍐嶅脊鍥?    }
 
     @Override
     public void setPrimaryColors(@ColorInt int ... colors) {
@@ -407,7 +406,7 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
 //    }
 
 //    /**
-//     * @deprecated 使用 findViewById(ID_IMAGE_ARROW) 代替
+//     * @deprecated 浣跨敤 findViewById(ID_IMAGE_ARROW) 浠ｆ浛
 //     */
 //    @Deprecated
 //    public ImageView getArrowView() {
@@ -415,7 +414,7 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
 //    }
 //
 //    /**
-//     * @deprecated 使用 findViewById(ID_IMAGE_PROGRESS) 代替
+//     * @deprecated 浣跨敤 findViewById(ID_IMAGE_PROGRESS) 浠ｆ浛
 //     */
 //    @Deprecated
 //    public ImageView getProgressView() {
@@ -423,7 +422,7 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
 //    }
 //
 //    /**
-//     * @deprecated 使用 findViewById(ID_TEXT_TITLE) 代替
+//     * @deprecated 浣跨敤 findViewById(ID_TEXT_TITLE) 浠ｆ浛
 //     */
 //    @Deprecated
 //    public TextView getTitleText() {
@@ -433,3 +432,4 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
     //</editor-fold>
 
 }
+

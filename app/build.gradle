@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    namespace 'me.businesscomponent'
+    compileSdk 34
     defaultConfig {
         applicationId "me.businesscomponent"
-        minSdkVersion 15
-        targetSdkVersion 27
+        minSdk 15
+        targetSdk 34
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -46,3 +47,6 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.uber.autodispose:autodispose-android:1.1.0'
 }
+
+
+

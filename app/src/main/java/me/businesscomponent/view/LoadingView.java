@@ -1,4 +1,4 @@
-package me.businesscomponent.view;
+﻿package me.businesscomponent.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -15,8 +15,7 @@ import me.businesscomponent.R;
 import me.businesscomponent.utils.ScreenUtils;
 
 /**
- * 菊花loadingView,支持设置颜色和大小
- *
+ * 鑿婅姳loadingView,鏀寔璁剧疆棰滆壊鍜屽ぇ灏? *
  * @author: ym.li
  * @since: 2018/7/28/028
  * @version: 1.2.0
@@ -152,3 +151,4 @@ public class LoadingView extends View {
         }
     }
 }
+
